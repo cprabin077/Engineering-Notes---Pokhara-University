@@ -1,0 +1,174 @@
+ create table job
+    (
+    job_id int primary key,
+    category varchar(20)
+    );
+
+desc job;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| job_id   | int(11)     | NO   | PRI | NULL    |       |
+| category | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+
+    create table employee
+     (
+    emp_no int primary key,
+    e_name varchar(20) not null,
+    e_address varchar(20) default 'Earth',
+    e_ph_no bigint,
+    dept_no int,
+    dept_name varchar(20),
+    job_id int,
+    salary float,
+    foreign key(job_id) references job(job_id)
+    );
+
+desc employee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| emp_no    | int(11)     | NO   | PRI | NULL    |       |
+| e_name    | varchar(20) | NO   |     | NULL    |       |
+| e_address | varchar(20) | YES  |     | Earth   |       |
+| e_ph_no   | bigint(20)  | YES  |     | NULL    |       |
+| dept_no   | int(11)     | YES  |     | NULL    |       |
+| dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id    | int(11)     | YES  | MUL | NULL    |       |
+| salary    | float       | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+----------------------------------------------------------------
+ insert into job values(1,'manager');
+ insert into job values(2,'Programmer');
+insert into job values(3,'designer');
+insert into job values(4,'Tester');
+ insert into job values(5,'Hr');
+------------------------------------------------------------------
+ select * from job;
++--------+------------+
+| job_id | category   |
++--------+------------+
+|      1 | manager    |
+|      2 | Programmer |
+|      3 | designer   |
+|      4 | Tester     |
+|      5 | Hr         |
++--------+------------+
+---------------------------------------------------------------------
+insert into employee values(1,'Ram','dhn',9868412345,1,'BCA',1,50000);
+ insert into employee values(2,'Hari','dhn',9868412745,2,'BE Computer',5,40000);
+insert into employee values(3,'Raju','ktm',9868412744,1,'BCA',5,30000);
+ insert into employee values(4,'Sunny','Npj',9868422744,1,'BCA',2,35000);
+ insert into employee values(5,'Suraj','Npj',9868422444,2,'BE Computer',3,45000);
+ insert into employee values(6,'Arjun','Mnr',9868432444,2,'BE Computer',4,45500);
+ insert into employee values(7,'Amish','dhn',9878432444,1,'BCA',NULL,NULL);
+-----------------------------------------------------------------------------
+ insert into employee values(8,'Suraj','Npj',9868422444,2,'BE Computer',10,45000);
+
+--Note : when we try to insert job_id(i.e 10) which is not in table job .
+
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`dbms_lab`.`employee`, CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job` (`job_id`))
+-----------------------------------------------------------------------------
+select * from employee;
+
+|emp_no | e_name | e_address | e_ph_no    | dept_no | dept_name  | job_id | salary 
+-----------------------------------------------------------------------------------
+|     1 | Ram     | dhn      | 9868412345 |       1 | BCA         |      1 |  50000 
+|      2 | Hari   | dhn      | 9868412745 |       2 | BE Computer |      5 |  40000 
+|      3 | Raju   | ktm      | 9868412744 |       1 | BCA         |      5 |  30000 
+|      4 | Sunny  | Npj      | 9868422744 |       1 | BCA         |      2 |  35000 
+|      5 | Suraj  | Npj      | 9868422444 |       2 | BE Computer |      3 |  45000 
+|      6 | Arjun  | Mnr      | 9868432444 |       2 | BE Computer |      4 |  45500 
+|      7 | Amish  | dhn      | 9878432444 |       1 | BCA         |   NULL |   NULL 
++--------+--------+-----------+------------+---------+-----------------------------
+
+1. Display total salary spent for each job category.
+
+Query:
+  select category,sum(Salary) from employee inner join
+job on employee.job_id = job.job_id group by job.category;
+
+output:
++------------+-------------+
+| category   | sum(Salary) |
++------------+-------------+
+| designer   |       45000 |
+| Hr         |       70000 |
+| manager    |       50000 |
+| Programmer |       35000 |
+| Tester     |       45500 |
++------------+-------------+
+
+			OR
+ select job_id,sum(Salary) from employee group by job_id;
+output:
++--------+-------------+
+| job_id | sum(Salary) |
++--------+-------------+
+|   NULL |        NULL |
+|      1 |       50000 |
+|      2 |       35000 |
+|      3 |       45000 |
+|      4 |       45500 |
+|      5 |       70000 |
++--------+-------------+
+
+2. Display employee who have maximum salary of each department.
+
+query:
+   select dept_name,max(salary) from employee group by dept_name;
+
+output:
++-------------+-------------+
+| dept_name   | max(salary) |
++-------------+-------------+
+| BCA         |       50000 |
+| BE Computer |       45500 |
++-------------+-------------+
+
+3. Display number of employees working in each department and their department name.
+
+query:
+ select dept_name,count(emp_no) from employee group by dept_name;
+
+output:
++-------------+---------------+
+| dept_name   | count(emp_no) |
++-------------+---------------+
+| BCA         |             4 |
+| BE Computer |             3 |
++-------------+---------------+
+
+4. Display the details of employees sorting the salary in increasing order.
+
+query:
+   select * from employees order by salary asc;
+
+output:
+
+|emp_no | e_name | e_address| e_ph_no    | dept_no | dept_name   | job_id | salary|
++-------+--------+----------+------------+---------+-------------+-------+--------+
+|     7 | Amish  | dhn      | 9878432444 |       1 | BCA         |   NULL |   NULL 
+|     3 | Raju   | ktm      | 9868412744 |       1 | BCA         |      5 |  30000 
+|     4 | Sunny  | Npj      | 9868422744 |       1 | BCA         |      2 |  35000 
+|     2 | Hari   | dhn      | 9868412745 |       2 | BE Computer |      5 |  40000 
+|     5 | Suraj  | Npj      | 9868422444 |       2 | BE Computer |      3 |  45000 
+|     6 | Arjun  | Mnr      | 9868432444 |       2 | BE Computer |      4 |  45500 
+|     1 | Ram    | dhn      | 9868412345 |       1 | BCA         |      1 |  50000 
++-------+--------+----------+------------+---------+-------------+-------+--------+
+
+5. Show the record of employee earning salary greater than  40000 in each department.
+
+query:
+	select * from employee where salary > 40000;
+
+output:
++--------+--------+-----------+------------+---------+-------------+--------
+| emp_no| e_name | e_address| e_ph_no    | dept_no | dept_name   | job_id | salary 
++--------+--------+-----------+------------+---------+-------------+--------
+|     1 | Ram    | dhn      | 9868412345 |       1 | BCA         |      1 |  50000 
+|     5 | Suraj  | Npj      | 9868422444 |       2 | BE Computer |      3 |  45000 
+|     6 | Arjun  | Mnr      | 9868432444 |       2 | BE Computer |      4 |  45500 
++--------+--------+-----------+------------+---------+-------------+--------

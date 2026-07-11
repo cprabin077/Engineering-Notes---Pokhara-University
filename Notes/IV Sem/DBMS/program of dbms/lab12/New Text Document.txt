@@ -1,0 +1,166 @@
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '*.* to prajwal1' at line 1
+MariaDB [(none)]> grant create on *.* to prajwal1;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [(none)]> Bye
+Ctrl-C -- exit!
+
+C:\xampp1\mysql\bin>mysql.exe -u prajwal1 -p
+Enter password: **********
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 11
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use prajwal
+Database changed
+MariaDB [prajwal]> create table department
+    ->    (
+    ->     dept_no int primary key,
+    ->     dept_name varchar(20),
+    ->     dept_loaction varchar(20)
+    ->    );
+ERROR 1050 (42S01): Table 'department' already exists
+MariaDB [prajwal]> create database prajwal1
+    -> create table department
+    ->    (
+    ->     dept_no int primary key,
+    ->     dept_name varchar(20),
+    ->     dept_loaction varchar(20)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'create table department
+   (
+    dept_no int primary key,
+    dept_name varch...' at line 2
+MariaDB [prajwal]> create database prajwal1
+    -> (
+    ->     dept_no int primary key,
+    ->     dept_name varchar(20),
+    ->     dept_loaction varchar(20)
+    ->    );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(
+    dept_no int primary key,
+    dept_name varchar(20),
+    dept_loaction v...' at line 2
+MariaDB [prajwal]> Bye
+Ctrl-C -- exit!
+
+C:\xampp1\mysql\bin> mysql.exe -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 12
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> grant ALl on *.* to prajwal1;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [(none)]> ByeCtrl-C -- exit!
+
+
+C:\xampp1\mysql\bin>mysql -u prajwal1 -p
+Enter password: **********
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 13
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database db_prajwal1;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> use db_prajwal1;
+Database changed
+MariaDB [db_prajwal1]>  create table department
+    ->    (
+    ->     dept_no int primary key,
+    ->     dept_name varchar(20),
+    ->     dept_loaction varchar(20)
+    ->    );
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [db_prajwal1]> create table employee
+    ->      (
+    ->     emp_id int primary key,
+    ->     emp_name varchar(20) not null,
+    ->     emp_contact bigint unique,
+    ->     salary float,
+    ->     dept_no int,
+    ->     foreign key(dept_no) references department(dept_no)
+    ->     );
+Query OK, 0 rows affected (0.024 sec)
+
+MariaDB [db_prajwal1]>
+MariaDB [db_prajwal1]> insert into department values(1,'BCA','Dhn');
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [db_prajwal1]>  insert into department values(2,'BE Computer','ktm');
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal1]> insert into department values(3,'BE Civil','ktm');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [db_prajwal1]>  insert into department values(4,'BBA','mnr');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal1]> insert into employee values(1,'Ironman',9814523456,50000,1);
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [db_prajwal1]>  insert into employee values(2,'Deadpool',9814524456,55000,2);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal1]>  insert into employee values(3,'Spiderman',9815524446,45000,1);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal1]>  insert into employee values(4,'Groot',9115524446,15000,3);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal1]> Bye
+Ctrl-C -- exit!
+
+C:\xampp1\mysql\bin>mysql.exe -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 14
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create user bhaskar identified by 'pass123';
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [(none)]> Grant all on employee to bhaskar;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> Grant all on *.* to bhaskar;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [(none)]> use db_prajwal1;
+Database changed
+MariaDB [db_prajwal1]> Bye
+Ctrl-C -- exit!
+
+C:\xampp1\mysql\bin>mysql -u bhasker -p
+Enter password: *******
+ERROR 1045 (28000): Access denied for user 'bhasker'@'localhost' (using password: YES)
+
+C:\xampp1\mysql\bin>mysql -u bhaskar -p
+Enter password: *******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>

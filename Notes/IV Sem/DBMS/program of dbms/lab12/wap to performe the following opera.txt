@@ -1,0 +1,2 @@
+wap to performe the following operation add subt mult divi using jsp servlet or both .
+designe that has two level user name password ,show the masssage to user login succesful if username and password matches and redirect to the new form or show the error message and redirect user to same login form using html jsp or servlet or jsp or servlate only.

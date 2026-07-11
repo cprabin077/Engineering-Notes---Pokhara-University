@@ -1,0 +1,154 @@
+Microsoft Windows [Version 10.0.22621.1702]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Dell>cd C:\xampp1\mysql\bin
+
+C:\xampp1\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use db_prajwal;
+ERROR 1049 (42000): Unknown database 'db_prajwal'
+MariaDB [(none)]> create table employee
+    -> (
+    -> emp_no int,
+    -> e_name varchar(50),
+    -> e_address varchar(50),
+    -> e_ph_no bigint,
+    -> dept_no int,
+    -> job_id int,
+    -> salary float
+    -> );
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> create table dept
+    -> (
+    -> dept_no int primary key,
+    -> dept_name varchar(50)
+    -> );
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> create database prajwalchy
+    -> 0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0' at line 2
+MariaDB [(none)]> Create database prajwal;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> use prajwal;
+Database changed
+MariaDB [prajwal]> Creste table Customer
+    -> (
+    -> Id int primary key,
+    -> Name varchar(50),
+    -> Address varchar(50),
+    -> age int(5),
+    -> salary int(15)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Creste table Customer
+(
+Id int primary key,
+Name varchar(50),
+Address varchar...' at line 1
+MariaDB [prajwal]> Create table Customer
+    -> (
+    -> Id int primary key,
+    -> Name varchar(50),
+    -> Address varchar(50),
+    -> age int(5),
+    -> salary int(15)
+    -> );
+Query OK, 0 rows affected (0.008 sec)
+
+MariaDB [prajwal]> insert into Customer values(1,'sagar','dhn',23,20000);
+Query OK, 1 row affected (0.070 sec)
+
+MariaDB [prajwal]> insert into Customer values(2,'parbin','muda',22,18000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [prajwal]> insert into Customer values(3,'hanok','chitwan',25,25000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [prajwal]> insert into Customer values(4,'prem','tkp',40,5000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [prajwal]> insert into Customer values(5,'dilip','gulmi',30,500056);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [prajwal]> insert into Customer values(6,'kiran','landon',12,10000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [prajwal]> select * from Customer;
++----+--------+---------+------+--------+
+| Id | Name   | Address | age  | salary |
++----+--------+---------+------+--------+
+|  1 | sagar  | dhn     |   23 |  20000 |
+|  2 | parbin | muda    |   22 |  18000 |
+|  3 | hanok  | chitwan |   25 |  25000 |
+|  4 | prem   | tkp     |   40 |   5000 |
+|  5 | dilip  | gulmi   |   30 | 500056 |
+|  6 | kiran  | landon  |   12 |  10000 |
++----+--------+---------+------+--------+
+6 rows in set (0.000 sec)
+
+MariaDB [prajwal]> select name, salary from customer where age<=25 and salary>=4000;
++--------+--------+
+| name   | salary |
++--------+--------+
+| sagar  |  20000 |
+| parbin |  18000 |
+| hanok  |  25000 |
+| kiran  |  10000 |
++--------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [prajwal]> select name, salary from customer where age<=25 and salary>=50000;
+Empty set (0.000 sec)
+
+MariaDB [prajwal]> select name, salary from customer where age<=25 and salary>=20000;
++-------+--------+
+| name  | salary |
++-------+--------+
+| sagar |  20000 |
+| hanok |  25000 |
++-------+--------+
+2 rows in set (0.000 sec)
+
+MariaDB [prajwal]> select * from Customer where salary between 1000 and 20000
+    -> 0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0' at line 2
+MariaDB [prajwal]> select * from Customer where salary between 1000 and 20000;
++----+--------+---------+------+--------+
+| Id | Name   | Address | age  | salary |
++----+--------+---------+------+--------+
+|  1 | sagar  | dhn     |   23 |  20000 |
+|  2 | parbin | muda    |   22 |  18000 |
+|  4 | prem   | tkp     |   40 |   5000 |
+|  6 | kiran  | landon  |   12 |  10000 |
++----+--------+---------+------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [prajwal]> select * from Customer where salary in (20000,5000,10000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [prajwal]> select * from Customer where salary in (20000,5000,10000);
++----+-------+---------+------+--------+
+| Id | Name  | Address | age  | salary |
++----+-------+---------+------+--------+
+|  1 | sagar | dhn     |   23 |  20000 |
+|  4 | prem  | tkp     |   40 |   5000 |
+|  6 | kiran | landon  |   12 |  10000 |
++----+-------+---------+------+--------+
+3 rows in set (0.000 sec)
+
+MariaDB [prajwal]>MariaDB [prajwal]> select * from Customer where Name like '%s%';
++----+-------+---------+------+--------+
+| Id | Name  | Address | age  | salary |
++----+-------+---------+------+--------+
+|  1 | sagar | dhn     |   23 |  20000 |
++----+-------+---------+------+--------+
+1 row in set (0.001 sec)
+
+MariaDB [prajwal]>

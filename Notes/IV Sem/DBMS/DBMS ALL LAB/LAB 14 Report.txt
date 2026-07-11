@@ -1,0 +1,133 @@
+Trigeer and assertion
+syntax :
+ create trigger trigger_name
+ {befor | after} {insert | delete | update}
+ on table_name
+for each row
+
+begin
+     declare var datatype;
+  --
+end
+
+Example:
+create table tbl_audit_nast
+    -> (old_name varchar(20),
+    -> new_name varchar(20),
+    -> v_user varchar(20),
+    -> acc_date date,
+    -> v_action varchar(20)
+    -> );
+
+  delimiter $$
+ create or replace trigger trg_nast
+    -> after insert
+    -> on tbl_nast
+    -> for each row
+    -> begin
+    -> declare uname varchar(20);
+    -> declare adate date;
+    -> select user(),sysdate() into uname,adate from dual;
+    -> insert into tbl_audit_nast values ( NULL,    new.name,uname,adate,'insert');
+    -> end;
+    -> $$
+
+$$$
+
+select * from tbl_nast;
+  
++----+---------+-----------+-------------+
+| id | name    | address   | contact     |
++----+---------+-----------+-------------+
+|  1 | Ram     | Dhangadhi |  9847512345 |
+|  2 | Raju    | Dhangadhi |  9475894235 |
+|  3 | hari    | NULL      |        NULL |
+|  5 | Bhaskar | dhn       | 94587536122 |
++----+---------+-----------+-------------+
+
+select * from tbl_audit_nast;
+ 
++----------+----------+----------------+------------+----------+
+| old_name | new_name | v_user         | acc_date   | v_action |
++----------+----------+----------------+------------+----------+
+| NULL     | Bhaskar  | root@localhost | 2022-07-14 | insert   |
++----------+----------+----------------+------------+----------+
+
+
+
+
+ create table branch
+    -> (
+    -> bname varchar(20),
+    -> bcity varchar(20),
+    -> assets float
+    -> );
+Query OK, 0 rows affected (0.205 sec)
+
+MariaDB [example]> create table loan
+    -> (
+    -> lno int primary key,
+    -> bname varchar(20),
+    -> amount float,
+    -> foreign key(bname) references branch(bname)
+    -> );
+ERROR 1005 (HY000): Can't create table `example`.`loan` (errno: 150 "Foreign key constraint is incorrectly formed")
+MariaDB [example]> alter table branch add primary key(bname);
+Query OK, 0 rows affected (0.394 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [example]> create table loan
+    -> (
+    -> lno int primary key,
+    -> bname varchar(20),
+    -> amount float,
+    -> foreign key(bname) references branch(bname)
+    -> );
+Query OK, 0 rows affected (0.137 sec)
+
+MariaDB [example]> insert into branch values ('A','dhn',10000);
+Query OK, 1 row affected (0.038 sec)
+
+MariaDB [example]> insert into branch values ('B','ktm',15000);
+Query OK, 1 row affected (0.063 sec)
+
+MariaDB [example]> insert into branch values ('C','dhn',15000);
+Query OK, 1 row affected (0.040 sec)
+
+MariaDB [example]> insert into loan values (1,'A',2500);
+Query OK, 1 row affected (0.037 sec)
+
+MariaDB [example]> insert into loan values (2,'A',200);
+Query OK, 1 row affected (0.033 sec)
+
+MariaDB [example]> insert into loan values (3,'C',5000);
+Query OK, 1 row affected (0.030 sec)
+
+MariaDB [example]> select * from branch;
++-------+-------+--------+
+| bname | bcity | assets |
++-------+-------+--------+
+| A     | dhn   |  10000 |
+| B     | ktm   |  15000 |
+| C     | dhn   |  15000 |
++-------+-------+--------+
+3 rows in set (0.000 sec)
+
+MariaDB [example]> select * from loan;
++-----+-------+--------+
+| lno | bname | amount |
++-----+-------+--------+
+|   1 | A     |   2500 |
+|   2 | A     |    200 |
+|   3 | C     |   5000 |
++-----+-------+--------+
+3 rows in set (0.000 sec)
+
+Q. write an assertion for bank database to ensure the assets value for 
+the A branch is equal to sum of all amounts lent by the A branch.
+
+create assertion dhn_ass_chk check
+( not exists ( select * from branch where bname = 'A'
+               and assets != ( select sum(amount) from loan
+  				where bname = 'A')));
+

@@ -1,0 +1,116 @@
+Microsoft Windows [Version 10.0.22621.1702]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Dell>cp C:\xampp\mysql\bin
+'cp' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Dell>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql.exe -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>  create table desc EMP;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc EMP' at line 1
+MariaDB [(none)]> create table EMP
+    -> (
+    -> empno int primary key,
+    -> ename varchar(20) not null,
+    -> job varchar(20) not null,
+    -> deptno int,
+    -> sal float
+    -> );
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use prajwal
+ERROR 1049 (42000): Unknown database 'prajwal'
+MariaDB [(none)]> create database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [(none)]> create database prajwal;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> use prajwal;
+Database changed
+MariaDB [prajwal]> create table EMP
+    -> (
+    -> empno int primary key,
+    -> ename varchar(20) not null,
+    -> job varchar(20) not null,
+    -> deptno int,
+    -> sal float
+    -> );
+Query OK, 0 rows affected (0.008 sec)
+
+MariaDB [prajwal]> desc EMP;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| empno  | int(11)     | NO   | PRI | NULL    |       |
+| ename  | varchar(20) | NO   |     | NULL    |       |
+| job    | varchar(20) | NO   |     | NULL    |       |
+| deptno | int(11)     | YES  |     | NULL    |       |
+| sal    | float       | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.017 sec)
+
+MariaDB [prajwal]> insert into EMP(empno,ename,job,depno,sal)
+    -> values(20,'hunter','labour',30,20000);
+ERROR 1054 (42S22): Unknown column 'depno' in 'field list'
+MariaDB [prajwal]> insert into EMP(empno,ename,job,depno,sal)
+    ->
+    -> delet from EMP;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'delet from EMP' at line 3
+MariaDB [prajwal]> insert into EMP(empno,ename,job,depno,sal)
+    -> values(200,'hunter','labour',30,20000);
+ERROR 1054 (42S22): Unknown column 'depno' in 'field list'
+MariaDB [prajwal]> delete from EMP;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [prajwal]> alter table EMP add constraint chk_EMP_no check(empno>100);
+Query OK, 0 rows affected (0.030 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [prajwal]> insert into EMP(empno,ename,job,depno,sal)
+    -> values(200,'hunter','labour',30,20000);
+ERROR 1054 (42S22): Unknown column 'depno' in 'field list'
+MariaDB [prajwal]> insert into EMP(empno,ename,job,deptno,sal)
+    -> values(200,'hunter','labour',30,20000);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [prajwal]> select * from EMP;
++-------+--------+--------+--------+-------+
+| empno | ename  | job    | deptno | sal   |
++-------+--------+--------+--------+-------+
+|   200 | hunter | labour |     30 | 20000 |
++-------+--------+--------+--------+-------+
+1 row in set (0.000 sec)
+
+MariaDB [prajwal]> alter table emp add unique(deptno);
+Query OK, 0 rows affected (0.011 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [prajwal]> select * from EMP;
++-------+--------+--------+--------+-------+
+| empno | ename  | job    | deptno | sal   |
++-------+--------+--------+--------+-------+
+|   200 | hunter | labour |     30 | 20000 |
++-------+--------+--------+--------+-------+
+1 row in set (0.000 sec)
+
+MariaDB [prajwal]> desc EMP;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| empno  | int(11)     | NO   | PRI | NULL    |       |
+| ename  | varchar(20) | NO   |     | NULL    |       |
+| job    | varchar(20) | NO   |     | NULL    |       |
+| deptno | int(11)     | YES  | UNI | NULL    |       |
+| sal    | float       | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.007 sec)

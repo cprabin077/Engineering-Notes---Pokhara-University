@@ -1,0 +1,340 @@
+create table department
+    -> (
+    -> dno int primary key,
+    -> dname varchar(20)
+    -> );
+
+ create table student
+    -> (
+    -> sid int primary key,
+    -> sname varchar(20),
+    -> sex varchar(10),
+    -> dob date,
+    -> dno int,
+    -> foreign key(dno) references department(dno)
+    -> );
+create table faculty
+    -> (
+    -> fid int primary key,
+    -> fname varchar(20),
+    -> designation varchar(20),
+    -> salary float,
+    -> dno int,
+    -> foreign key(dno) references department(dno)
+    -> );
+
+create table course
+    -> (
+    -> cid int primary key,
+    -> cname varchar(20),
+    -> credits int,
+    -> dno int,
+    -> foreign key(dno) references department(dno)
+    -> );
+
+create table hostel
+    -> (
+    -> hid int primary key,
+    -> hname varchar(20),
+    -> seats int
+    -> );
+
+create table register
+    -> (
+    -> rid int primary key,
+    -> sid int,
+    -> cid int,
+    -> sem int,
+    -> hid int,
+    -> foreign key(sid) references student(sid),
+    -> foreign key(cid) references course(cid),
+    -> foreign key(hid) references hostel(hid)
+    -> );
+
+create table teaching
+    -> (
+    -> tid int primary key,
+    -> sid int,
+    -> cid int,
+    -> sem int,
+    -> fid int,
+    -> foreign key(sid) references student(sid),
+    -> foreign key(cid) references course(cid),
+	foreign key(fid) references faculty(fid)
+    -> );
+
+--------------------------------------------------------------------------------
+insert into department values(1,'BCA');
+insert into department values(2,'BE Computer');
+insert into department values(3,'BE Civil');
+insert into department values(4,'BBA');
+
+-----------------------------------------------------------------------------
+insert into student values(1,'Ramesh','male','2022-03-15',1);
+insert into student values(2,'Ram','male','2020-04-1',2);
+insert into student values(3,'Sunita','female','2019-06-12',3);
+insert into student values(4,'Anjali','female','2017-07-11',4);
+insert into student values(5,'Anju','female','2017-02-19',1);
+insert into student values(6,'Anu','female','2018-02-19',2);
+insert into student values(7,'Anish','male','2020-03-14',3);
+insert into student values(8,'Suraj','male','2021-12-25',4);
+insert into student values(9,'Hari','male','2022-11-22',NULL);
+insert into student values(10,'Himesh','male','2019-10-26',NULL);
+
+---------------------------------------------------------------------------------
+insert into faculty values(1,'Thor','GOD of thunder',50000,1);
+insert into faculty values(2,'Ironman','star trek',100000,2);
+insert into faculty values(3,'Spiderman','photographer',45000,3);
+insert into faculty values(4,'Superman','krypton planet',60000,4);
+insert into faculty values(5,'Wonder woman','Avenger',55000,2);
+insert into faculty values(6,'Black widow','Avenger',52000,1);
+
+--------------------------------------------------------------------------
+insert into course values(1,'DBMS',3,1);
+insert into course values(2,'Data structure',3,2);
+insert into course values(3,'Software engineering',4,3);
+insert into course values(4,'Math',3,4);
+insert into course values(5,'Math',4,2);
+insert into course values(6,'DBMS',4,2);
+--------------------------------------------------------------------
+insert into hostel values (1,'Mars',50);
+insert into hostel values (2,'Jupiter',25);
+insert into hostel values (3,'Pluto',10);
+ insert into hostel values (4,'Earth',100);
+--------------------------------------------------------------------
+insert into register values(1,1,2,4,1);
+insert into register values(2,1,1,3,2);
+insert into register values(3,2,3,4,1);
+insert into register values(4,2,4,3,3);
+ insert into register values(5,4,1,4,1);
+insert into register values(6,5,3,3,NULL);
+insert into register values(7,3,1,4,2);
+insert into register values(8,6,3,3,4);
+insert into register values(9,7,4,4,3);
+insert into register values(10,5,1,3,NULL);
+
+--------------------------------------------------------------------
+ insert into teaching values(1,1,2,3,1);
+ insert into teaching values(2,2,1,4,1);
+ insert into teaching values(3,1,3,3,2);
+insert into teaching values(4,4,4,1,4);
+ insert into teaching values(5,6,2,3,3);
+insert into teaching values(6,5,3,4,6);
+insert into teaching values(7,7,2,3,5);
+insert into teaching values(8,6,4,4,3);
+ insert into teaching values(9,7,2,3,4);
+ insert into teaching values(10,8,1,4,2);
+
+-------------------------------------------------------------------------
+---------------------------------------------------------------------------
+1. List out the ID, Name and Date of Birth of students registered for a specific 
+course.
+
+query :
+  	select s.sid, s.sname, s.dob from student s inner join register r on
+    s.sid = r.sid;
++-----+--------+------------+
+| sid | sname  | dob        |
++-----+--------+------------+
+|   1 | Ramesh | 2022-03-15 |
+|   1 | Ramesh | 2022-03-15 |
+|   2 | Ram    | 2020-04-01 |
+|   2 | Ram    | 2020-04-01 |
+|   3 | Sunita | 2019-06-12 |
+|   4 | Anjali | 2017-07-11 |
+|   5 | Anju   | 2017-02-19 |
+|   5 | Anju   | 2017-02-19 |
+|   6 | Anu    | 2018-02-19 |
+|   7 | Anish  | 2020-03-14 |
++-----+--------+------------+
+  				OR
+ select distinct s.sid, s.sname, s.dob from student s inner join register r on s.sid = r.sid;  (inner join)
++-----+--------+------------+
+| sid | sname  | dob        |
++-----+--------+------------+
+|   1 | Ramesh | 2022-03-15 |
+|   2 | Ram    | 2020-04-01 |
+|   3 | Sunita | 2019-06-12 |
+|   4 | Anjali | 2017-07-11 |
+|   5 | Anju   | 2017-02-19 |
+|   6 | Anu    | 2018-02-19 |
+|   7 | Anish  | 2020-03-14 |
++-----+--------+------------+
+
+			OR
+ select distinct sid, sname, dob from student natural join register; (natural join)
++-----+--------+------------+
+| sid | sname  | dob        |
++-----+--------+------------+
+|   1 | Ramesh | 2022-03-15 |
+|   2 | Ram    | 2020-04-01 |
+|   4 | Anjali | 2017-07-11 |
+|   5 | Anju   | 2017-02-19 |
+|   3 | Sunita | 2019-06-12 |
+|   6 | Anu    | 2018-02-19 |
+|   7 | Anish  | 2020-03-14 |
++-----+--------+------------+
+
+			OR
+
+	select distinct s.sid, s.sname, s.dob from student s, register r
+    where s.sid = r.sid;  (Equi join)
++-----+--------+------------+
+| sid | sname  | dob        |
++-----+--------+------------+
+|   1 | Ramesh | 2022-03-15 |
+|   2 | Ram    | 2020-04-01 |
+|   3 | Sunita | 2019-06-12 |
+|   4 | Anjali | 2017-07-11 |
+|   5 | Anju   | 2017-02-19 |
+|   6 | Anu    | 2018-02-19 |
+|   7 | Anish  | 2020-03-14 |
++-----+--------+------------+
+					OR
+
+	select distinct s.sid, s.sname, s.dob,c.cname from student s inner join 	register r on s.sid = r.sid inner join course c on c.cid = r.cid;
++-----+--------+------------+----------------------+
+| sid | sname  | dob        | cname                |
++-----+--------+------------+----------------------+
+|   1 | Ramesh | 2022-03-15 | Data structure       |
+|   1 | Ramesh | 2022-03-15 | DBMS                 |
+|   2 | Ram    | 2020-04-01 | Software engineering |
+|   2 | Ram    | 2020-04-01 | Math                 |
+|   4 | Anjali | 2017-07-11 | DBMS                 |
+|   5 | Anju   | 2017-02-19 | Software engineering |
+|   3 | Sunita | 2019-06-12 | DBMS                 |
+|   6 | Anu    | 2018-02-19 | Software engineering |
+|   7 | Anish  | 2020-03-14 | Math                 |
+|   5 | Anju   | 2017-02-19 | DBMS                 |
++-----+--------+------------+----------------------+
+					OR
+
+select distinct s.sid, s.sname, s.dob ,c.cname from student s, register r, 
+course c where s.sid = r.sid and c.cid = r.cid;
++-----+--------+------------+----------------------+
+| sid | sname  | dob        | cname                |
++-----+--------+------------+----------------------+
+|   1 | Ramesh | 2022-03-15 | Data structure       |
+|   1 | Ramesh | 2022-03-15 | DBMS                 |
+|   2 | Ram    | 2020-04-01 | Software engineering |
+|   2 | Ram    | 2020-04-01 | Math                 |
+|   4 | Anjali | 2017-07-11 | DBMS                 |
+|   5 | Anju   | 2017-02-19 | Software engineering |
+|   3 | Sunita | 2019-06-12 | DBMS                 |
+|   6 | Anu    | 2018-02-19 | Software engineering |
+|   7 | Anish  | 2020-03-14 | Math                 |
+|   5 | Anju   | 2017-02-19 | DBMS                 |
++-----+--------+------------+----------------------+
+
+
+2. List out the ID, Name and Date of Birth of students registered for a specific 
+	course, staying in a specific Hostel.
+
+Query:
+   select s.sid, s.sname, s.dob,c.cname,h.hname from student s inner join
+    register r on s.sid = r.sid inner join course c on c.cid = r.cid inner join hostel h on h.hid = r.hid;
++-----+--------+------------+----------------------+---------+
+| sid | sname  | dob        | cname                | hname   |
++-----+--------+------------+----------------------+---------+
+|   1 | Ramesh | 2022-03-15 | Data structure       | Mars    |
+|   2 | Ram    | 2020-04-01 | Software engineering | Mars    |
+|   4 | Anjali | 2017-07-11 | DBMS                 | Mars    |
+|   1 | Ramesh | 2022-03-15 | DBMS                 | Jupiter |
+|   3 | Sunita | 2019-06-12 | DBMS                 | Jupiter |
+|   2 | Ram    | 2020-04-01 | Math                 | Pluto   |
+|   7 | Anish  | 2020-03-14 | Math                 | Pluto   |
+|   6 | Anu    | 2018-02-19 | Software engineering | Earth   |
++-----+--------+------------+----------------------+---------+
+
+			OR
+
+select s.sid,s.sname,s.dob,c.cname,h.hname from student s, register r, course c, hostel h where r.sid = s.sid and r.cid = c.cid and r.hid = h.hid;
++-----+--------+------------+----------------------+---------+
+| sid | sname  | dob        | cname                | hname   |
++-----+--------+------------+----------------------+---------+
+|   1 | Ramesh | 2022-03-15 | Data structure       | Mars    |
+|   2 | Ram    | 2020-04-01 | Software engineering | Mars    |
+|   4 | Anjali | 2017-07-11 | DBMS                 | Mars    |
+|   1 | Ramesh | 2022-03-15 | DBMS                 | Jupiter |
+|   3 | Sunita | 2019-06-12 | DBMS                 | Jupiter |
+|   2 | Ram    | 2020-04-01 | Math                 | Pluto   |
+|   7 | Anish  | 2020-03-14 | Math                 | Pluto   |
+|   6 | Anu    | 2018-02-19 | Software engineering | Earth   |
++-----+--------+------------+----------------------+---------+
+
+3. List the names of faculties who teach for a specific course.
+
+query :
+select f.fname,c.cname from faculty f inner join teaching t on f.fid = t.fid
+    inner join course c on c.cid = t.cid;    
++--------------+----------------------+
+| fname        | cname                |
++--------------+----------------------+
+| Thor         | Data structure       |
+| Thor         | DBMS                 |
+| Ironman      | Software engineering |
+| Superman     | Math                 |
+| Spiderman    | Data structure       |
+| Black widow  | Software engineering |
+| Wonder woman | Data structure       |
+| Spiderman    | Math                 |
+| Superman     | Data structure       |
+| Ironman      | DBMS                 |
++--------------+----------------------+
+
+				OR
+
+select f.fname,c.cname from faculty f, teaching t, course c where f.fid = t.fid
+    and t.cid = c.cid;
++--------------+----------------------+
+| fname        | cname                |
++--------------+----------------------+
+| Thor         | Data structure       |
+| Thor         | DBMS                 |
+| Ironman      | Software engineering |
+| Superman     | Math                 |
+| Spiderman    | Data structure       |
+| Black widow  | Software engineering |
+| Wonder woman | Data structure       |
+| Spiderman    | Math                 |
+| Superman     | Data structure       |
+| Ironman      | DBMS                 |
++--------------+----------------------+
+
+4. Display the student details by implementing left outerjoin.
+select * from student s left outer join department d on s.dno = d.dno;
++-----+--------+--------+------------+------+------+-------------+
+| sid | sname  | sex    | dob        | dno  | dno  | dname       |
++-----+--------+--------+------------+------+------+-------------+
+|   1 | Ramesh | male   | 2022-03-15 |    1 |    1 | BCA         |
+|   2 | Ram    | male   | 2020-04-01 |    2 |    2 | BE Computer |
+|   3 | Sunita | female | 2019-06-12 |    3 |    3 | BE Civil    |
+|   4 | Anjali | female | 2017-07-11 |    4 |    4 | BBA         |
+|   5 | Anju   | female | 2017-02-19 |    1 |    1 | BCA         |
+|   6 | Anu    | female | 2018-02-19 |    2 |    2 | BE Computer |
+|   7 | Anish  | male   | 2020-03-14 |    3 |    3 | BE Civil    |
+|   8 | Suraj  | male   | 2021-12-25 |    4 |    4 | BBA         |
+|   9 | Hari   | male   | 2022-11-22 | NULL | NULL | NULL        |
+|  10 | Himesh | male   | 2019-10-26 | NULL | NULL | NULL        |
++-----+--------+--------+------------+------+------+-------------+
+
+5. Display the student details by implementing a right outer join
+
+select * from student s right outer join department d on s.dno = d.dno;
++------+--------+--------+------------+------+-----+-------------+
+| sid  | sname  | sex    | dob        | dno  | dno | dname       |
++------+--------+--------+------------+------+-----+-------------+
+|    1 | Ramesh | male   | 2022-03-15 |    1 |   1 | BCA         |
+|    5 | Anju   | female | 2017-02-19 |    1 |   1 | BCA         |
+|    2 | Ram    | male   | 2020-04-01 |    2 |   2 | BE Computer |
+|    6 | Anu    | female | 2018-02-19 |    2 |   2 | BE Computer |
+|    3 | Sunita | female | 2019-06-12 |    3 |   3 | BE Civil    |
+|    7 | Anish  | male   | 2020-03-14 |    3 |   3 | BE Civil    |
+|    4 | Anjali | female | 2017-07-11 |    4 |   4 | BBA         |
+|    8 | Suraj  | male   | 2021-12-25 |    4 |   4 | BBA         |
++------+--------+--------+------------+------+-----+-------------+
+
+
+
+
+

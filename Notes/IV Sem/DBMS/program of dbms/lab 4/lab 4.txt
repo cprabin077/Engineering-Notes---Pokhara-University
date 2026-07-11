@@ -1,0 +1,129 @@
+
+MariaDB [(none)]> use db_prajwal;
+Database changed
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| e_no        | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.025 sec)
+
+MariaDB [db_prajwal]> select * from employee;
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+| e_no | e_name | e_address | e_ph_no    | e_dept_no | e_dept_name | job_id | salary   |
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+|    3 | Rohit  | india     | 8888888888 |        45 | BCCI        |     19 | 70000000 |
+|   14 | kiran  | Giant     | 7777777777 |         9 | nast        |     25 | 70000000 |
+|   17 | jaddu  | india     | 9999999999 |        28 | BCCI        |     20 | 70000000 |
+|   18 | kholi  | india     | 7777777777 |        18 | BCCI        |     15 | 70000000 |
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+4 rows in set (0.041 sec)
+
+MariaDB [db_prajwal]> select * from EMP;
+ERROR 1146 (42S02): Table 'db_prajwal.emp' doesn't exist
+MariaDB [db_prajwal]> update employee set salary=17000 from employee where name='kiran';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from employee where name='kiran'' at line 1
+MariaDB [db_prajwal]> update employee set salary = 17000 where name='kiran';
+ERROR 1054 (42S22): Unknown column 'name' in 'where clause'
+MariaDB [db_prajwal]> update employee set salary = '17000' where name='kiran';
+ERROR 1054 (42S22): Unknown column 'name' in 'where clause'
+MariaDB [db_prajwal]> update employee set salary = 17000 where e_no= 14;
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [db_prajwal]> select * from EMP;
+ERROR 1146 (42S02): Table 'db_prajwal.emp' doesn't exist
+MariaDB [db_prajwal]> select * from employee;
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+| e_no | e_name | e_address | e_ph_no    | e_dept_no | e_dept_name | job_id | salary   |
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+|    3 | Rohit  | india     | 8888888888 |        45 | BCCI        |     19 | 70000000 |
+|   14 | kiran  | Giant     | 7777777777 |         9 | nast        |     25 |    17000 |
+|   17 | jaddu  | india     | 9999999999 |        28 | BCCI        |     20 | 70000000 |
+|   18 | kholi  | india     | 7777777777 |        18 | BCCI        |     15 | 70000000 |
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+4 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select * from employee where salary = (select min(salary) from employee);
++------+--------+-----------+------------+-----------+-------------+--------+--------+
+| e_no | e_name | e_address | e_ph_no    | e_dept_no | e_dept_name | job_id | salary |
++------+--------+-----------+------------+-----------+-------------+--------+--------+
+|   14 | kiran  | Giant     | 7777777777 |         9 | nast        |     25 |  17000 |
++------+--------+-----------+------------+-----------+-------------+--------+--------+
+1 row in set (0.001 sec)
+
+MariaDB [db_prajwal]> select * from employee where salary = (select max(salary) from employee);
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+| e_no | e_name | e_address | e_ph_no    | e_dept_no | e_dept_name | job_id | salary   |
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+|    3 | Rohit  | india     | 8888888888 |        45 | BCCI        |     19 | 70000000 |
+|   17 | jaddu  | india     | 9999999999 |        28 | BCCI        |     20 | 70000000 |
+|   18 | kholi  | india     | 7777777777 |        18 | BCCI        |     15 | 70000000 |
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+3 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select e_name, e_dept_name, min(salary) from employee where salary = (select max(salary) from employee);
++--------+-------------+-------------+
+| e_name | e_dept_name | min(salary) |
++--------+-------------+-------------+
+| Rohit  | BCCI        |    70000000 |
++--------+-------------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [db_prajwal]> select e_name, e_dept_name, min(salary) from employee where salary = (select min(salary) from employee);
++--------+-------------+-------------+
+| e_name | e_dept_name | min(salary) |
++--------+-------------+-------------+
+| kiran  | nast        |       17000 |
++--------+-------------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [db_prajwal]> select e_name, e_dept_name, max(salary) from employee where salary = (select max(salary) from employee);
++--------+-------------+-------------+
+| e_name | e_dept_name | max(salary) |
++--------+-------------+-------------+
+| Rohit  | BCCI        |    70000000 |
++--------+-------------+-------------+
+1 row in set (0.000 sec)
+
+MariaDB [db_prajwal]> select count(*) from employee;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [db_prajwal]> select count(*) as e_no from employee;
++------+
+| e_no |
++------+
+|    4 |
++------+
+1 row in set (0.000 sec)
+
+MariaDB [db_prajwal]> select count(e_no) as total_record from employee;
++--------------+
+| total_record |
++--------------+
+|            4 |
++--------------+
+1 row in set (0.000 sec)
+
+MariaDB [db_prajwal]> select ((10+20+30)/3) as average;
++---------+
+| average |
++---------+
+| 20.0000 |
++---------+
+1 row in set (0.000 sec)
+
+MariaDB [db_prajwal]>

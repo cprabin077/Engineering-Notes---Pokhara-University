@@ -1,0 +1,705 @@
+Microsoft Windows [Version 10.0.22621.1702]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Dell>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql.exe -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use db_prajwal;
+Database changed
+MariaDB [db_prajwal]> create table job
+    -> (
+    -> job_id int primary key,
+    -> category varchar(20)
+    -> );
+Query OK, 0 rows affected (0.008 sec)
+
+MariaDB [db_prajwal]> show tables;
++----------------------+
+| Tables_in_db_prajwal |
++----------------------+
+| employee             |
+| job                  |
++----------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> desc job;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| job_id   | int(11)     | NO   | PRI | NULL    |       |
+| category | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.017 sec)
+
+MariaDB [db_prajwal]> create table employee
+    -> (
+    -> emp_no int primary key,
+    -> e_name varchar(20) not null,
+    -> e_address varchar(20) default 'Earth',
+    -> e_ph_no bigint,
+    -> dept_name varchar(20),
+    -> job_id int,
+    -> salary float,
+    -> foreign key(job_id) references job(job_id)
+    -> );
+ERROR 1050 (42S01): Table 'employee' already exists
+MariaDB [db_prajwal]> create table employee1
+    ->     -> (
+    ->     -> emp_no int primary key,
+    ->     -> e_name varchar(20) not null,
+    ->     -> e_address varchar(20) default 'Earth',
+    ->     -> e_ph_no bigint,
+    ->     -> dept_name varchar(20),
+    ->     -> job_id int,
+    ->     -> salary float,
+    ->     -> foreign key(job_id) references job(job_id)
+    ->     -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-> (
+    -> emp_no int primary key,
+    -> e_name varchar(20) not null,
+    -...' at line 2
+MariaDB [db_prajwal]> create table employee2
+    -> (
+    -> emp_no int primary key,
+    -> e_name varchar(20) not null,
+    -> e_address varchar(20) default 'Earth',
+    -> e_ph_no bigint,
+    -> dept_name varchar(20),
+    -> job_id int,
+    -> salary float,
+    -> foreign key(job_id) references job(job_id)
+    -> );
+Query OK, 0 rows affected (0.039 sec)
+
+MariaDB [db_prajwal]> desc employee5;
+ERROR 1146 (42S02): Table 'db_prajwal.employee5' doesn't exist
+MariaDB [db_prajwal]> desc employee2;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| emp_no    | int(11)     | NO   | PRI | NULL    |       |
+| e_name    | varchar(20) | NO   |     | NULL    |       |
+| e_address | varchar(20) | YES  |     | Earth   |       |
+| e_ph_no   | bigint(20)  | YES  |     | NULL    |       |
+| dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id    | int(11)     | YES  | MUL | NULL    |       |
+| salary    | float       | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+7 rows in set (0.016 sec)
+
+MariaDB [db_prajwal]> select * from job;
+Empty set (0.043 sec)
+
+MariaDB [db_prajwal]> insert into job values(1,'Manager');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [db_prajwal]> insert into job values(2,'Programmer');
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [db_prajwal]> insert into job values(3,'Designer');
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [db_prajwal]> insert into job values(4,'Tester');
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [db_prajwal]> insert into job values(5,'HR');
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [db_prajwal]> select * from job;
++--------+------------+
+| job_id | category   |
++--------+------------+
+|      1 | Manager    |
+|      2 | Programmer |
+|      3 | Designer   |
+|      4 | Tester     |
+|      5 | HR         |
++--------+------------+
+5 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(1,'Ram','Dhangadhi',0904904,'BCA',4,50000.5);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(2,'Shyam','Mahendranagar',0523762,'BE Computer',3,15000.5);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
++--------+--------+---------------+---------+-------------+--------+---------+
+2 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(1,'Ram','Dhangadhi',0904904,'BCA',4,50000.5);MariaDB [(none)]> use db_prajwal;
+Database changed
+MariaDB [db_prajwal]> desc job;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| job_id   | int(11)     | NO   | PRI | NULL    |       |
+| category | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.013 sec)
+
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| e_no        | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.013 sec)
+
+MariaDB [db_prajwal]> select * from job;
++--------+------------+
+| job_id | category   |
++--------+------------+
+|      1 | Manager    |
+|      2 | Programmer |
+|      3 | Designer   |
+|      4 | Tester     |
+|      5 | HR         |
++--------+------------+
+5 rows in set (0.035 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
++--------+--------+---------------+---------+-------------+--------+---------+
+2 rows in set (0.006 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(3,'Hari','tkp',05267762,'BE civil',4,16000);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(4,'mamit','lamki',0526745,'math',4,26000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(5,'parbin','muda',0526747,'BCA',5,26000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(6,'sagar','muda',1526747,'BCA',2,36000);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
+|      3 | Hari   | tkp           | 5267762 | BE civil    |      4 |   16000 |
+|      4 | mamit  | lamki         |  526745 | math        |      4 |   26000 |
+|      5 | parbin | muda          |  526747 | BCA         |      5 |   26000 |
+|      6 | sagar  | muda          | 1526747 | BCA         |      2 |   36000 |
++--------+--------+---------------+---------+-------------+--------+---------+
+6 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.kob_id group by job.category;
+ERROR 1054 (42S22): Unknown column 'job.kob_id' in 'on clause'
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.job_id group by job.category;
++------------+-------------+
+| category   | sum(salary) |
++------------+-------------+
+| Designer   |     15000.5 |
+| HR         |       26000 |
+| Programmer |       36000 |
+| Tester     |     92000.5 |
++------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.job_id group by job.category order by sum(salary) desc;
++------------+-------------+
+| category   | sum(salary) |
++------------+-------------+
+| Tester     |     92000.5 |
+| Programmer |       36000 |
+| HR         |       26000 |
+| Designer   |     15000.5 |
++------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]>
+MariaDB [db_prajwal]> select dept_name,max(salary) from employee2 group by dept_name;
++-------------+-------------+
+| dept_name   | max(salary) |
++-------------+-------------+
+| BCA         |     50000.5 |
+| BE civil    |       16000 |
+| BE Computer |     15000.5 |
+| math        |       26000 |
++-------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select dept_name,count(emp_no) from employee2 group by dept_name;
++-------------+---------------+
+| dept_name   | count(emp_no) |
++-------------+---------------+
+| BCA         |             3 |
+| BE civil    |             1 |
+| BE Computer |             1 |
+| math        |             1 |
++-------------+---------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select from employee2 order by salary;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from employee2 order by salary' at line 1
+MariaDB [db_prajwal]> select * from employee2 order by salary;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
+|      3 | Hari   | tkp           | 5267762 | BE civil    |      4 |   16000 |
+|      4 | mamit  | lamki         |  526745 | math        |      4 |   26000 |
+|      5 | parbin | muda          |  526747 | BCA         |      5 |   26000 |
+|      6 | sagar  | muda          | 1526747 | BCA         |      2 |   36000 |
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
++--------+--------+---------------+---------+-------------+--------+---------+
+6 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select * from employee2 where salary > 40000;
++--------+--------+-----------+---------+-----------+--------+---------+
+| emp_no | e_name | e_address | e_ph_no | dept_name | job_id | salary  |
++--------+--------+-----------+---------+-----------+--------+---------+
+|      1 | Ram    | Dhangadhi |  904904 | BCA       |      4 | 50000.5 |
++--------+--------+-----------+---------+-----------+--------+---------+
+1 row in set (0.000 sec)
+MariaDB [(none)]> use db_prajwal;
+Database changed
+MariaDB [db_prajwal]> desc job;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| job_id   | int(11)     | NO   | PRI | NULL    |       |
+| category | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.013 sec)
+
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| e_no        | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.013 sec)
+
+MariaDB [db_prajwal]> select * from job;
++--------+------------+
+| job_id | category   |
++--------+------------+
+|      1 | Manager    |
+|      2 | Programmer |
+|      3 | Designer   |
+|      4 | Tester     |
+|      5 | HR         |
++--------+------------+
+5 rows in set (0.035 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
++--------+--------+---------------+---------+-------------+--------+---------+
+2 rows in set (0.006 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(3,'Hari','tkp',05267762,'BE civil',4,16000);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(4,'mamit','lamki',0526745,'math',4,26000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(5,'parbin','muda',0526747,'BCA',5,26000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(6,'sagar','muda',1526747,'BCA',2,36000);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
+|      3 | Hari   | tkp           | 5267762 | BE civil    |      4 |   16000 |
+|      4 | mamit  | lamki         |  526745 | math        |      4 |   26000 |
+|      5 | parbin | muda          |  526747 | BCA         |      5 |   26000 |
+|      6 | sagar  | muda          | 1526747 | BCA         |      2 |   36000 |
++--------+--------+---------------+---------+-------------+--------+---------+
+6 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.kob_id group by job.category;
+ERROR 1054 (42S22): Unknown column 'job.kob_id' in 'on clause'
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.job_id group by job.category;
++------------+-------------+
+| category   | sum(salary) |
++------------+-------------+
+| Designer   |     15000.5 |
+| HR         |       26000 |
+| Programmer |       36000 |
+| Tester     |     92000.5 |
++------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.job_id group by job.category order by sum(salary) desc;
++------------+-------------+
+| category   | sum(salary) |
++------------+-------------+
+| Tester     |     92000.5 |
+| Programmer |       36000 |
+| HR         |       26000 |
+| Designer   |     15000.5 |
++------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]>
+MariaDB [db_prajwal]> select dept_name,max(salary) from employee2 group by dept_name;
++-------------+-------------+
+| dept_name   | max(salary) |
++-------------+-------------+
+| BCA         |     50000.5 |
+| BE civil    |       16000 |
+| BE Computer |     15000.5 |
+| math        |       26000 |
++-------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select dept_name,count(emp_no) from employee2 group by dept_name;
++-------------+---------------+
+| dept_name   | count(emp_no) |
++-------------+---------------+
+| BCA         |             3 |
+| BE civil    |             1 |
+| BE Computer |             1 |
+| math        |             1 |
++-------------+---------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select from employee2 order by salary;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from employee2 order by salary' at line 1
+MariaDB [db_prajwal]> select * from employee2 order by salary;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
+|      3 | Hari   | tkp           | 5267762 | BE civil    |      4 |   16000 |
+|      4 | mamit  | lamki         |  526745 | math        |      4 |   26000 |
+|      5 | parbin | muda          |  526747 | BCA         |      5 |   26000 |
+|      6 | sagar  | muda          | 1526747 | BCA         |      2 |   36000 |
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
++--------+--------+---------------+---------+-------------+--------+---------+
+6 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select * from employee2 where salary > 40000;
++--------+--------+-----------+---------+-----------+--------+---------+
+| emp_no | e_name | e_address | e_ph_no | dept_name | job_id | salary  |
++--------+--------+-----------+---------+-----------+--------+---------+
+|      1 | Ram    | Dhangadhi |  904904 | BCA       |      4 | 50000.5 |
++--------+--------+-----------+---------+-----------+--------+---------+
+1 row in set (0.000 sec)MariaDB [(none)]> use db_prajwal;
+Database changed
+MariaDB [db_prajwal]> desc job;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| job_id   | int(11)     | NO   | PRI | NULL    |       |
+| category | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.013 sec)
+
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| e_no        | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.013 sec)
+
+MariaDB [db_prajwal]> select * from job;
++--------+------------+
+| job_id | category   |
++--------+------------+
+|      1 | Manager    |
+|      2 | Programmer |
+|      3 | Designer   |
+|      4 | Tester     |
+|      5 | HR         |
++--------+------------+
+5 rows in set (0.035 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
++--------+--------+---------------+---------+-------------+--------+---------+
+2 rows in set (0.006 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(3,'Hari','tkp',05267762,'BE civil',4,16000);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(4,'mamit','lamki',0526745,'math',4,26000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(5,'parbin','muda',0526747,'BCA',5,26000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(6,'sagar','muda',1526747,'BCA',2,36000);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
+|      3 | Hari   | tkp           | 5267762 | BE civil    |      4 |   16000 |
+|      4 | mamit  | lamki         |  526745 | math        |      4 |   26000 |
+|      5 | parbin | muda          |  526747 | BCA         |      5 |   26000 |
+|      6 | sagar  | muda          | 1526747 | BCA         |      2 |   36000 |
++--------+--------+---------------+---------+-------------+--------+---------+
+6 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.kob_id group by job.category;
+ERROR 1054 (42S22): Unknown column 'job.kob_id' in 'on clause'
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.job_id group by job.category;
++------------+-------------+
+| category   | sum(salary) |
++------------+-------------+
+| Designer   |     15000.5 |
+| HR         |       26000 |
+| Programmer |       36000 |
+| Tester     |     92000.5 |
++------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.job_id group by job.category order by sum(salary) desc;
++------------+-------------+
+| category   | sum(salary) |
++------------+-------------+
+| Tester     |     92000.5 |
+| Programmer |       36000 |
+| HR         |       26000 |
+| Designer   |     15000.5 |
++------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]>
+MariaDB [db_prajwal]> select dept_name,max(salary) from employee2 group by dept_name;
++-------------+-------------+
+| dept_name   | max(salary) |
++-------------+-------------+
+| BCA         |     50000.5 |
+| BE civil    |       16000 |
+| BE Computer |     15000.5 |
+| math        |       26000 |
++-------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select dept_name,count(emp_no) from employee2 group by dept_name;
++-------------+---------------+
+| dept_name   | count(emp_no) |
++-------------+---------------+
+| BCA         |             3 |
+| BE civil    |             1 |
+| BE Computer |             1 |
+| math        |             1 |
++-------------+---------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select from employee2 order by salary;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from employee2 order by salary' at line 1
+MariaDB [db_prajwal]> select * from employee2 order by salary;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
+|      3 | Hari   | tkp           | 5267762 | BE civil    |      4 |   16000 |
+|      4 | mamit  | lamki         |  526745 | math        |      4 |   26000 |
+|      5 | parbin | muda          |  526747 | BCA         |      5 |   26000 |
+|      6 | sagar  | muda          | 1526747 | BCA         |      2 |   36000 |
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
++--------+--------+---------------+---------+-------------+--------+---------+
+6 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select * from employee2 where salary > 40000;
++--------+--------+-----------+---------+-----------+--------+---------+
+| emp_no | e_name | e_address | e_ph_no | dept_name | job_id | salary  |
++--------+--------+-----------+---------+-----------+--------+---------+
+|      1 | Ram    | Dhangadhi |  904904 | BCA       |      4 | 50000.5 |
++--------+--------+-----------+---------+-----------+--------+---------+
+1 row in set (0.000 sec)MariaDB [(none)]> use db_prajwal;
+Database changed
+MariaDB [db_prajwal]> desc job;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| job_id   | int(11)     | NO   | PRI | NULL    |       |
+| category | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.013 sec)
+
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| e_no        | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.013 sec)
+
+MariaDB [db_prajwal]> select * from job;
++--------+------------+
+| job_id | category   |
++--------+------------+
+|      1 | Manager    |
+|      2 | Programmer |
+|      3 | Designer   |
+|      4 | Tester     |
+|      5 | HR         |
++--------+------------+
+5 rows in set (0.035 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
++--------+--------+---------------+---------+-------------+--------+---------+
+2 rows in set (0.006 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(3,'Hari','tkp',05267762,'BE civil',4,16000);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(4,'mamit','lamki',0526745,'math',4,26000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(5,'parbin','muda',0526747,'BCA',5,26000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee2 values(6,'sagar','muda',1526747,'BCA',2,36000);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
+|      3 | Hari   | tkp           | 5267762 | BE civil    |      4 |   16000 |
+|      4 | mamit  | lamki         |  526745 | math        |      4 |   26000 |
+|      5 | parbin | muda          |  526747 | BCA         |      5 |   26000 |
+|      6 | sagar  | muda          | 1526747 | BCA         |      2 |   36000 |
++--------+--------+---------------+---------+-------------+--------+---------+
+6 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.kob_id group by job.category;
+ERROR 1054 (42S22): Unknown column 'job.kob_id' in 'on clause'
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.job_id group by job.category;
++------------+-------------+
+| category   | sum(salary) |
++------------+-------------+
+| Designer   |     15000.5 |
+| HR         |       26000 |
+| Programmer |       36000 |
+| Tester     |     92000.5 |
++------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select category, sum(salary) from employee2 join job on employee2.job_id = job.job_id group by job.category order by sum(salary) desc;
++------------+-------------+
+| category   | sum(salary) |
++------------+-------------+
+| Tester     |     92000.5 |
+| Programmer |       36000 |
+| HR         |       26000 |
+| Designer   |     15000.5 |
++------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]>
+MariaDB [db_prajwal]> select dept_name,max(salary) from employee2 group by dept_name;
++-------------+-------------+
+| dept_name   | max(salary) |
++-------------+-------------+
+| BCA         |     50000.5 |
+| BE civil    |       16000 |
+| BE Computer |     15000.5 |
+| math        |       26000 |
++-------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select dept_name,count(emp_no) from employee2 group by dept_name;
++-------------+---------------+
+| dept_name   | count(emp_no) |
++-------------+---------------+
+| BCA         |             3 |
+| BE civil    |             1 |
+| BE Computer |             1 |
+| math        |             1 |
++-------------+---------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select from employee2 order by salary;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from employee2 order by salary' at line 1
+MariaDB [db_prajwal]> select * from employee2 order by salary;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
+|      3 | Hari   | tkp           | 5267762 | BE civil    |      4 |   16000 |
+|      4 | mamit  | lamki         |  526745 | math        |      4 |   26000 |
+|      5 | parbin | muda          |  526747 | BCA         |      5 |   26000 |
+|      6 | sagar  | muda          | 1526747 | BCA         |      2 |   36000 |
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
++--------+--------+---------------+---------+-------------+--------+---------+
+6 rows in set (0.000 sec)
+
+MariaDB [db_prajwal]> select * from employee2 where salary > 40000;
++--------+--------+-----------+---------+-----------+--------+---------+
+| emp_no | e_name | e_address | e_ph_no | dept_name | job_id | salary  |
++--------+--------+-----------+---------+-----------+--------+---------+
+|      1 | Ram    | Dhangadhi |  904904 | BCA       |      4 | 50000.5 |
++--------+--------+-----------+---------+-----------+--------+---------+
+1 row in set (0.000 sec)

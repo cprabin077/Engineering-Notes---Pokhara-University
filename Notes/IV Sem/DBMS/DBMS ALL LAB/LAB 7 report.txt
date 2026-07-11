@@ -1,0 +1,231 @@
+ create table sailors
+    (
+    sid int primary key,
+    sname varchar(20),
+    rating int,
+    age int
+    );
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| sid    | int(11)     | NO   | PRI | NULL    |       |
+| sname  | varchar(20) | YES  |     | NULL    |       |
+| rating | int(11)     | YES  |     | NULL    |       |
+| age    | int(11)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+create table boats
+    (
+    bid int primary key,
+    bname varchar(20),
+     color varchar(20)
+     );
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| bid   | int(11)     | NO   | PRI | NULL    |       |
+| bname | varchar(20) | YES  |     | NULL    |       |
+| color | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+create table reserves
+    (
+   rid int primary key,
+    sid int,
+    bid int,
+    day date,
+    foreign key(sid) references sailors(sid),
+    foreign key(bid) references boats(bid)
+    );
+ desc reserves;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| sid   | int(11) | YES  | MUL | NULL    |       |
+| bid   | int(11) | YES  | MUL | NULL    |       |
+| day   | date    | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+
+
+insert into sailors values (1,'Ram',5,25);
+insert into sailors values (2,'Raju',4,20);
+insert into sailors values (3,'Hari',3,22);
+insert into sailors values (4,'Suraj',5,24);
+insert into sailors values (5,'Suman',3,26);
+
+select * from sailors;
++-----+-------+--------+------+
+| sid | sname | rating | age  |
++-----+-------+--------+------+
+|   1 | Ram   |      5 |   25 |
+|   2 | Raju  |      4 |   20 |
+|   3 | Hari  |      3 |   22 |
+|   4 | Suraj |      5 |   24 |
+|   5 | Suman |      3 |   26 |
++-----+-------+--------+------+
+-----------------------------------------------------
+
+insert into boats values (1,'titanic','blue');
+insert into boats values (2,'Black pearl','black');
+insert into boats values (3,'Dunga','red');
+insert into boats values (4,'Diamond','blue');
+insert into boats values (5,'Kagaz','blue');
+
+select * from boats;
++-----+-------------+-------+
+| bid | bname       | color |
++-----+-------------+-------+
+|   1 | titanic     | blue  |
+|   2 | Black pearl | black |
+|   3 | Dunga       | red   |
+|   4 | Diamond     | blue  |
+|   5 | Kagaz       | blue  |
++-----+-------------+-------+
+---------------------------------------------------
+insert into reserves values(1,1,1,'2020-05-19');
+insert into reserves values(2,1,2,'2020-04-25');
+insert into reserves values(3,2,1,'2021-01-15');
+ insert into reserves values(4,2,4,'2022-01-13');
+insert into reserves values(5,3,4,'2021-12-05');
+insert into reserves values(6,4,2,'2020-02-07');
+insert into reserves values(7,5,3,'2023-10-06');
+insert into reserves values(8,4,5,'2022-07-19');
+
+select * from reserves;
++------+------+------------+
+| sid  | bid  | day        |
++------+------+------------+
+|    1 |    1 | 2020-05-19 |
+|    1 |    2 | 2020-04-25 |
+|    2 |    1 | 2021-01-15 |
+|    2 |    4 | 2022-01-13 |
+|    3 |    4 | 2021-12-05 |
+|    4 |    2 | 2020-02-07 |
+|    5 |    3 | 2023-10-06 |
+|    4 |    5 | 2022-07-19 |
++------+------+------------+
+---------------------------------------------------------
+1. Find all information of sailors who have reserved boat number 4.
+
+query:
+select * from sailors where sid in (select sid from reserves where bid = 4);
++-----+-------+--------+------+
+| sid | sname | rating | age  |
++-----+-------+--------+------+
+|   2 | Raju  |      4 |   20 |
+|   3 | Hari  |      3 |   22 |
++-----+-------+--------+------+
+
+or
+
+select * from sailors where sid =any(select sid from reserves where bid = 4);
++-----+-------+--------+------+
+| sid | sname | rating | age  |
++-----+-------+--------+------+
+|   2 | Raju  |      4 |   20 |
+|   3 | Hari  |      3 |   22 |
++-----+-------+--------+------+
+
+or
+
+select s.sid,sname,rating,age from sailors s, reserves r where s.sid = r.sid and r.bid = 4;
++-----+-------+--------+------+
+| sid | sname | rating | age  |
++-----+-------+--------+------+
+|   2 | Raju  |      4 |   20 |
+|   3 | Hari  |      3 |   22 |
++-----+-------+--------+------+
+
+2. Find the name of boat reserved by suraj.
+
+select bname from boats where bid in (select bid from reserves where sid in 
+(select sid from sailors where sname = 'suraj'));
+
+
++-------------+
+| bname       |
++-------------+
+| Black pearl |
+| Kagaz       |
++-------------+
+
+		or
+
+select b.bname from boats b , reserves r, sailors s where b.bid = r.bid 
+and r.sid = s.sid and s.sname = 'suraj';
++-------------+
+| bname       |
++-------------+
+| Black pearl |
+| Kagaz       |
++-------------+
+  
+3. Find the names of sailors who have reserved at least two boat.
+
+select sname from sailors 
+where sid in (select sid from reserves group by sid having count(bid)>=2);
++-------+
+| sname |
++-------+
+| Ram   |
+| Raju  |
+| Suraj |
++-------+
+
+		OR
+
+select s.sname, count(r.bid)  from sailors s, reserves r where s.sid = r.sid group by r.sid having count(r.bid)>=2;
++-------+--------------+
+| sname | count(r.bid) |
++-------+--------------+
+| Ram   |            2 |
+| Raju  |            2 |
+| Suraj |            2 |
++-------+--------------+
+
+4.  Find the ids of sailors who have reserved a red boat or a blue boat.
+
+select sid from reserves where bid in ( select bid from boats where color = 'red' or color = 'blue');
++------+
+| sid  |
++------+
+|    1 |
+|    2 |
+|    2 |
+|    3 |
+|    5 |
+|    4 |
++------+
+
+ 		OR
+select distinct sid from reserves where bid in ( select bid from boats where color = 'red' or color = 'blue');
++------+
+| sid  |
++------+
+|    1 |
+|    2 |
+|    3 |
+|    5 |
+|    4 |
++------+
+
+5. Find the name and the age of the youngest sailor.
+
+
+select sname,age as min_age from sailors 
+	where age = (select min(age) from sailors);
++-------+---------+
+| sname | min_age |
++-------+---------+
+| Raju  |      20 |
++-------+---------+
+
+6. Find the average age of sailors for each rating level.
+
+select rating, avg(age) from sailors group by rating;
++--------+----------+
+| rating | avg(age) |
++--------+----------+
+|      3 |  24.0000 |
+|      4 |  20.0000 |
+|      5 |  24.5000 |
++--------+----------+
+

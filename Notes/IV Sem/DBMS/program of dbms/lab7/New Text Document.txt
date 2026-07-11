@@ -1,0 +1,132 @@
+Microsoft Windows [Version 10.0.22621.1848]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\xampp1\mysql\bin> -u root -p
+'-u' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp1\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use prajwal
+Database changed
+MariaDB [prajwal]> select bname from boats where bid in (select bid from reserves where sid in (select sid from sailor where sname = 'suraj'));
+ERROR 1146 (42S02): Table 'prajwal.sailor' doesn't exist
+MariaDB [prajwal]> select bname from boats where bid in (select bid from reserves where sid in (select sid from sailors where sname = 'suraj'));
+Empty set (0.044 sec)
+
+MariaDB [prajwal]> select bname from boats where bid in (select bid from reserves where sid in (select sid from sailors where sname = 'samir'));
++-------+
+| bname |
++-------+
+| pukar |
++-------+
+1 row in set (0.001 sec)
+
+MariaDB [prajwal]> select b.name from boats b , reserves r, sailors s where b.bid = r.bid and r.sid = s.sid and s.sname ='samir';
+ERROR 1054 (42S22): Unknown column 'b.name' in 'field list'
+MariaDB [prajwal]> select sname from sailors where sid in (select sid from reserves group by sid having count(bid)>=2);
+Empty set (0.002 sec)
+
+MariaDB [prajwal]> selecr * from boats;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'selecr * from boats' at line 1
+MariaDB [prajwal]> select * from boats;
++-----+-------+--------+
+| bid | bname | color  |
++-----+-------+--------+
+|   1 | pukar | yellow |
+|   2 | rache | black  |
+|   3 | niraj | blue   |
+|   4 | suraj | white  |
+|   5 | niraj | green  |
++-----+-------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [prajwal]> select sid from reserves where bid in ( select bid from boats where color = 'red' or color = 'blue');                                                                                                                       Empty set (0.001 sec)
+
+MariaDB [prajwal]> select sid from reserves where bid in ( select bid from boats where color = 'yellow' or color = 'black');
++------+
+| sid  |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.001 sec)
+
+MariaDB [prajwal]> select * from boats;
++-----+-------+--------+
+| bid | bname | color  |
++-----+-------+--------+
+|   1 | pukar | yellow |
+|   2 | rache | black  |
+|   3 | niraj | blue   |
+|   4 | suraj | white  |
+|   5 | niraj | green  |
++-----+-------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [prajwal]> select * from sailors;
++-----+---------+--------+------+
+| sid | sname   | rating | age  |
++-----+---------+--------+------+
+|   1 | rajiv   |      5 |   25 |
+|   2 | samir   |      4 |   23 |
+|   3 | roshan  |      3 |   27 |
+|   4 | richa   |      4 |   24 |
+|   5 | archana |      3 |   22 |
++-----+---------+--------+------+
+5 rows in set (0.000 sec)
+
+MariaDB [prajwal]> select * from reserves;
++-----+------+------+------------+
+| rid | sid  | bid  | day        |
++-----+------+------+------------+
+|   1 |    1 |    2 | 2000-04-27 |
+|   2 |    3 |    4 | 2002-06-30 |
+|   3 |    2 |    1 | 2020-04-15 |
+|   4 | NULL | NULL | 2020-05-30 |
+|   5 | NULL | NULL | 2021-06-30 |
+|   6 |    4 |    5 | 2021-07-19 |
++-----+------+------+------------+
+6 rows in set (0.000 sec)
+
+MariaDB [prajwal]> select sname from sailors where sid in (select sid from reserves group by sid having count(bid)>=2);
+Empty set (0.001 sec)
+
+MariaDB [prajwal]> select sname from sailors where sid in (select sid from reserves group by sid having count(bid)>=1);
++--------+
+| sname  |
++--------+
+| rajiv  |
+| samir  |
+| roshan |
+| richa  |
++--------+
+4 rows in set (0.001 sec)
+
+MariaDB [prajwal]> select sname, age as min_age from sailors where age = (select min(age) from sailors);
++---------+---------+
+| sname   | min_age |
++---------+---------+
+| archana |      22 |
++---------+---------+
+1 row in set (0.001 sec)
+
+MariaDB [prajwal]> select  rating, avg(age) from sailors group by rating;
++--------+----------+
+| rating | avg(age) |
++--------+----------+
+|      3 |  24.5000 |
+|      4 |  23.5000 |
+|      5 |  25.0000 |
++--------+----------+
+3 rows in set (0.001 sec)
+
+MariaDB [prajwal]>

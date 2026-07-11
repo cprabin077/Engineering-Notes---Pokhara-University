@@ -1,0 +1,105 @@
+1.Insert at least 5 rows in the table.
+
+Query :
+   insert into employee values(1,'Ram','dhn',45612,12,'BCA',13,5000);
+   insert into employee values(2,'Ramesh','dhn',45612,15,'BE Computer',13,15000);
+   insert into employee values(3,'Hari','ktm',457612,12,'BE Computer',15,25000);
+  insert into employee values(4,'Suraj','Npj',455612,13,'BCA',14,2500);
+  insert into employee values(5,'Suresh','Npj',4556712,16,'BBA',15,250);
+
+output : select * from employee;
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name   | job_id | Salary |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+|      1 | Ram    | dhn       |   45612 |      12 | BCA         |     13 |   5000 |
+|      2 | Ramesh | dhn       |   45612 |      15 | BE Computer |     13 |  15000 |
+|      3 | Hari   | ktm       |  457612 |      12 | BE Computer |     15 |  25000 |
+|      4 | Suraj  | Npj       |  455612 |      13 | BCA         |     14 |   2500 |
+|      5 | Suresh | Npj       | 4556712 |      16 | BBA         |     15 |    250 |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+
+2. Display all the information of EMPLOYEE table.
+
+query:
+ 	select * from employee;
+output:
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name   | job_id | Salary |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+|      1 | Ram    | dhn       |   45612 |      12 | BCA         |     13 |   5000 |
+|      2 | Ramesh | dhn       |   45612 |      15 | BE Computer |     13 |  15000 |
+|      3 | Hari   | ktm       |  457612 |      12 | BE Computer |     15 |  25000 |
+|      4 | Suraj  | Npj       |  455612 |      13 | BCA         |     14 |   2500 |
+|      5 | Suresh | Npj       | 4556712 |      16 | BBA         |     15 |    250 |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+
+3. Display name, address, salary of each employee who works in department no 15.
+
+query:
+   select E_name, E_address, Salary from employee where Dept_no = 15;
+
+output :
++--------+-----------+--------+
+| E_name | E_address | Salary |
++--------+-----------+--------+
+| Ramesh | dhn       |  15000 |
++--------+-----------+--------+
+
+4. Update the city of Emp_no-5 with current city as Dhangadhi.
+
+query :
+  update employee set E_address = 'Dhangadhi' where Emp_no = 5;
+
+output:
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name   | job_id | Salary |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+|      1 | Ram    | dhn       |   45612 |      12 | BCA         |     13 |   5000 |
+|      2 | Ramesh | dhn       |   45612 |      15 | BE Computer |     13 |  15000 |
+|      3 | Hari   | ktm       |  457612 |      12 | BE Computer |     15 |  25000 |
+|      4 | Suraj  | Npj       |  455612 |      13 | BCA         |     14 |   2500 |
+|      5 | Suresh | Dhangadhi | 4556712 |      16 | BBA         |     15 |    250 |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+
+5. Display the details of Employee who works in department BE Computer.
+
+query: 
+  select * from employee where Dept_name = 'BE Computer';
+
+output:
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name   | job_id | Salary |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+|      2 | Ramesh | dhn       |   45612 |      15 | BE Computer |     13 |  15000 |
+|      3 | Hari   | ktm       |  457612 |      12 | BE Computer |     15 |  25000 |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+
+6.Delete the records of employee Hari.
+
+query :
+ delete from employee where E_name = 'Hari';
+
+output:
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name   | job_id | Salary |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+|      1 | Ram    | dhn       |   45612 |      12 | BCA         |     13 |   5000 |
+|      2 | Ramesh | dhn       |   45612 |      15 | BE Computer |     13 |  15000 |
+|      4 | Suraj  | Npj       |  455612 |      13 | BCA         |     14 |   2500 |
+|      5 | Suresh | Dhangadhi | 4556712 |      16 | BBA         |     15 |    250 |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+
+7. Display the complete record of employees working in BCA Department.
+
+Query:
+  select * from employee where Dept_name = 'BCA';
+
+output:
++--------+--------+-----------+---------+---------+-----------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name | job_id | Salary |
++--------+--------+-----------+---------+---------+-----------+--------+--------+
+|      1 | Ram    | dhn       |   45612 |      12 | BCA       |     13 |   5000 |
+|      4 | Suraj  | Npj       |  455612 |      13 | BCA       |     14 |   2500 |
++--------+--------+-----------+---------+---------+-----------+--------+--------+
+
+
