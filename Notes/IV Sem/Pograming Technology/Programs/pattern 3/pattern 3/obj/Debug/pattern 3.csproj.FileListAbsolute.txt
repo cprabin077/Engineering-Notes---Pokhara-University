@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\pattern 3\pattern 3\bin\Debug\pattern 3.exe.config
+D:\4th sem\MK programing technology\program\pattern 3\pattern 3\bin\Debug\pattern 3.exe
+D:\4th sem\MK programing technology\program\pattern 3\pattern 3\bin\Debug\pattern 3.pdb
+D:\4th sem\MK programing technology\program\pattern 3\pattern 3\obj\Debug\pattern 3.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\pattern 3\pattern 3\obj\Debug\pattern 3.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\pattern 3\pattern 3\obj\Debug\pattern 3.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\pattern 3\pattern 3\obj\Debug\pattern 3.exe
+D:\4th sem\MK programing technology\program\pattern 3\pattern 3\obj\Debug\pattern 3.pdb

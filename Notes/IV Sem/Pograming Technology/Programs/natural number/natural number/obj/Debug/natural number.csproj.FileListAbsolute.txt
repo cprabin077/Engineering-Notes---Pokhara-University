@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\natural number\natural number\bin\Debug\natural number.exe.config
+D:\4th sem\MK programing technology\program\natural number\natural number\bin\Debug\natural number.exe
+D:\4th sem\MK programing technology\program\natural number\natural number\bin\Debug\natural number.pdb
+D:\4th sem\MK programing technology\program\natural number\natural number\obj\Debug\natural number.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\natural number\natural number\obj\Debug\natural number.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\natural number\natural number\obj\Debug\natural number.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\natural number\natural number\obj\Debug\natural number.exe
+D:\4th sem\MK programing technology\program\natural number\natural number\obj\Debug\natural number.pdb

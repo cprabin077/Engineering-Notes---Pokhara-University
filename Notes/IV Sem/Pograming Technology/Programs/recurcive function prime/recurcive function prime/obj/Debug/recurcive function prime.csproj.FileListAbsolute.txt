@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\recurcive function prime\recurcive function prime\bin\Debug\recurcive function prime.exe.config
+D:\4th sem\MK programing technology\program\recurcive function prime\recurcive function prime\bin\Debug\recurcive function prime.exe
+D:\4th sem\MK programing technology\program\recurcive function prime\recurcive function prime\bin\Debug\recurcive function prime.pdb
+D:\4th sem\MK programing technology\program\recurcive function prime\recurcive function prime\obj\Debug\recurcive function prime.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\recurcive function prime\recurcive function prime\obj\Debug\recurcive function prime.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\recurcive function prime\recurcive function prime\obj\Debug\recurcive function prime.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\recurcive function prime\recurcive function prime\obj\Debug\recurcive function prime.exe
+D:\4th sem\MK programing technology\program\recurcive function prime\recurcive function prime\obj\Debug\recurcive function prime.pdb

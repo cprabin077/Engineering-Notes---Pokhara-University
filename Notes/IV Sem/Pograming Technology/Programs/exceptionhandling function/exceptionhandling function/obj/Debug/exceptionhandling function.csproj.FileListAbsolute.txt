@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\exceptionhandling function\exceptionhandling function\bin\Debug\exceptionhandling function.exe.config
+D:\4th sem\MK programing technology\program\exceptionhandling function\exceptionhandling function\bin\Debug\exceptionhandling function.exe
+D:\4th sem\MK programing technology\program\exceptionhandling function\exceptionhandling function\bin\Debug\exceptionhandling function.pdb
+D:\4th sem\MK programing technology\program\exceptionhandling function\exceptionhandling function\obj\Debug\exceptionhandling function.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\exceptionhandling function\exceptionhandling function\obj\Debug\exceptionhandling function.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\exceptionhandling function\exceptionhandling function\obj\Debug\exceptionhandling function.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\exceptionhandling function\exceptionhandling function\obj\Debug\exceptionhandling function.exe
+D:\4th sem\MK programing technology\program\exceptionhandling function\exceptionhandling function\obj\Debug\exceptionhandling function.pdb

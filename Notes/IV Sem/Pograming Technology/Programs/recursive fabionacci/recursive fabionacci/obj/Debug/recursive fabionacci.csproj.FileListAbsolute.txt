@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\recursive fabionacci\recursive fabionacci\bin\Debug\recursive fabionacci.exe.config
+D:\4th sem\MK programing technology\program\recursive fabionacci\recursive fabionacci\bin\Debug\recursive fabionacci.exe
+D:\4th sem\MK programing technology\program\recursive fabionacci\recursive fabionacci\bin\Debug\recursive fabionacci.pdb
+D:\4th sem\MK programing technology\program\recursive fabionacci\recursive fabionacci\obj\Debug\recursive fabionacci.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\recursive fabionacci\recursive fabionacci\obj\Debug\recursive fabionacci.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\recursive fabionacci\recursive fabionacci\obj\Debug\recursive fabionacci.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\recursive fabionacci\recursive fabionacci\obj\Debug\recursive fabionacci.exe
+D:\4th sem\MK programing technology\program\recursive fabionacci\recursive fabionacci\obj\Debug\recursive fabionacci.pdb

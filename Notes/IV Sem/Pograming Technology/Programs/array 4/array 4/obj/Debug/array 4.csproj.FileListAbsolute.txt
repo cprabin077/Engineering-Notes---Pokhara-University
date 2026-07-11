@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\array 4\array 4\bin\Debug\array 4.exe.config
+D:\4th sem\MK programing technology\program\array 4\array 4\bin\Debug\array 4.exe
+D:\4th sem\MK programing technology\program\array 4\array 4\bin\Debug\array 4.pdb
+D:\4th sem\MK programing technology\program\array 4\array 4\obj\Debug\array 4.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\array 4\array 4\obj\Debug\array 4.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\array 4\array 4\obj\Debug\array 4.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\array 4\array 4\obj\Debug\array 4.exe
+D:\4th sem\MK programing technology\program\array 4\array 4\obj\Debug\array 4.pdb
