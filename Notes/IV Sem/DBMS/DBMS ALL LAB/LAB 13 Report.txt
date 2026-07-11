@@ -1,0 +1,114 @@
+Stored Procedure:
+---------------------------------------------------------------------
+Syntax:
+ Create procedure proc_name([paramater])
+ 
+Begin
+    execution
+
+End
+
+Example:
+ 	delimiter $$
+
+	 Create procedure sp_emp_info()
+         begin
+           select * from employee;
+         End
+
+         $$
+
+To execute procedure:
+----------------------------------------------------------------------------------
+syntax : 
+  Call procedure_name([argument list])
+
+Eg:
+   Call sp_emp_info();
+
+
+show procedure status;
++------+-------------+-----------+----------------+---------------------+---------------------
+| Db   | Name        | Type      | Definer        | Modified            | Created             | 
++------+-------------+-----------+----------------+---------------------+---------------------
+| dbms | sp_emp_info | PROCEDURE | root@localhost | 2022-07-13 07:18:09 | 2022-07-13 07:18:09 | 
+
+
+
+==================================================================================================
+procedure with parameter
+------------------------------------------------------
+ 	delimiter $$
+
+ 	create procedure sp_emp_detail(IN emp_id int)
+   	 begin
+         select * from employee where eno = emp_id;
+    	 end
+
+        $$    
+
+Call sp_emp_detail(10);
+
++-----+-------+----------+------------+---------+--------+--------+-----------+
+| eno | ename | eaddress | ephno      | dept_no | job_id | salary | dept_name |
++-----+-------+----------+------------+---------+--------+--------+-----------+
+|  10 | vivek | bkt      | 9465814447 |       4 |     11 |   5500 | BBA       |
++-----+-------+----------+------------+---------+--------+--------+-----------+   
+
+
+
+delimiter $$
+	create procedure sp_emp(In emp_id int, OUT emp_name varchar(20))
+    	begin
+    	 select ename into emp_name from employee
+    	where eno = emp_id;
+   	end
+      $$ 
+
+To call:
+ call sp_emp(7,@emp_name);
+
+ To display:
+select @emp_name;
++-----------+
+| @emp_name |
++-----------+
+| Ramesh    |
++-----------+
+
+==========================================================================================
+delimiter $$
+ create procedure sp_sum(IN a int, IN b int, OUT c int)
+     begin
+    set c = a + b;
+    end
+     $$
+
+----------------------------------------------------------------------------------------
+call sp_sum(10,5,@x);
+
+select @x;
++------+
+| @x   |
++------+
+|   15 |
++------+
+
+--------------------------------------------------------------------------------------
+delimiter $$
+ create procedure sp_square(INOUT a int)
+     begin
+    set a = a * a;
+    end
+     $$
+
+set @x = 5;
+
+call sp_sqaure(@x);
+
+select @x;
++------+
+| @x   |
++------+
+|   25 |
++------+

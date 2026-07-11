@@ -1,0 +1,195 @@
+Microsoft Windows [Version 10.0.22621.1702]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Dell>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql.exe -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use db_prajwal;
+Database changed
+MariaDB [db_prajwal]> create table employee
+    -> (
+    -> emp_no int primary key,
+    -> e_name varchar(30),
+    -> e_address varchar(30),
+    -> e_ph_no varchar(10),
+    -> e_dept_no int,
+    -> e_dept_name varchar(20),
+    -> job_id int,
+    -> salary int
+    -> );
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [db_prajwal]> show tables;
++----------------------+
+| Tables_in_db_prajwal |
++----------------------+
+| employee             |
++----------------------+
+1 row in set (0.001 sec)
+
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_no      | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |C:\Users\Dell>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql.exe -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use db_prajwal;
+Database changed
+MariaDB [db_prajwal]> show employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'employee' at line 1
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_no      | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| hiredate    | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+9 rows in set (0.047 sec)
+
+MariaDB [db_prajwal]> alter table employee rename column emp_no e_no int;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'column emp_no e_no int' at line 1
+MariaDB [db_prajwal]> alter table employee change column emp_no e_no int;
+Query OK, 0 rows affected (0.037 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| e_no        | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| hiredate    | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+9 rows in set (0.011 sec)
+
+MariaDB [db_prajwal]> alter table empolyee modify job_id int;
+ERROR 1146 (42S02): Table 'db_prajwal.empolyee' doesn't exist
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| e_no        | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| hiredate    | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+9 rows in set (0.016 sec)
+
+MariaDB [db_prajwal]> alter table empolyee modify job_id varchar(50);
+ERROR 1146 (42S02): Table 'db_prajwal.empolyee' doesn't exist
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| e_no        | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| hiredate    | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+9 rows in set (0.014 sec)
+
+MariaDB [db_prajwal]> insert into employee(2,'msd','kathmandu','9848446655',5,'xxx',j23 ,20000,'2023-05-25');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '2,'msd','kathmandu','9848446655',5,'xxx',j23   ,20000,'2023-05-25')' at line 1
+MariaDB [db_prajwal]> insert into employee values(2,'msd','kathmandu','9848446655',5,'xxx',j23  ,20000,'2023-05-25');
+ERROR 1054 (42S22): Unknown column 'j23' in 'field list'
+MariaDB [db_prajwal]> insert into employee values(2,'msd','kathmandu','9848446655',5,'xxx',3    ,20000,'2023-05-25');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| e_no        | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| hiredate    | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+9 rows in set (0.013 sec)
+
+MariaDB [db_prajwal]> select * from employee;
++------+--------+-----------+------------+-----------+-------------+--------+--------+------------+
+| e_no | e_name | e_address | e_ph_no    | e_dept_no | e_dept_name | job_id | salary | hiredate   |
++------+--------+-----------+------------+-----------+-------------+--------+--------+------------+
+|    2 | msd    | kathmandu | 9848446655 |         5 | xxx         |      3 |  20000 | 2023-05-25 |
++------+--------+-----------+------------+-----------+-------------+--------+--------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [db_prajwal]>
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.019 sec)
+
+MariaDB [db_prajwal]> alter table employee add(hiredate date);
+Query OK, 0 rows affected (0.013 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db_prajwal]> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_no      | int(11)     | NO   | PRI | NULL    |       |
+| e_name      | varchar(30) | YES  |     | NULL    |       |
+| e_address   | varchar(30) | YES  |     | NULL    |       |
+| e_ph_no     | varchar(10) | YES  |     | NULL    |       |
+| e_dept_no   | int(11)     | YES  |     | NULL    |       |
+| e_dept_name | varchar(20) | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| hiredate    | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+9 rows in set (0.016 sec)
+
+MariaDB [db_prajwal]>

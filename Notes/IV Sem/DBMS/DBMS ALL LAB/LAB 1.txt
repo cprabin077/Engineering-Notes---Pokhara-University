@@ -1,0 +1,79 @@
+1. open shell 
+ mysql.exe -u root
+2. to display databases
+ show databases;
+3. To create database
+  create database db_name;
+4. to select database
+  use db_name;
+5. to show tables
+    show tables;
+
+6. to create table
+syntax:
+	create table tbl_name
+	(
+	   col_name datatype,
+	   col_name datatype,
+	   .
+	   .
+	);
+example:
+	create table tbl_std
+     	(
+     	   roll_no int primary key,
+    	   name varchar(20),
+    	   address varchar(20)
+    	);
+
+		or
+
+ 	create table tbl_nastian
+    (
+      id int,
+      name varchar(20),
+      address varchar(20),
+      primary key(id)
+    );
+7. to describe table design
+     desc table_name;
+
+
+desc tbl_nast;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+
+8. to add column
+----------------------
+query :
+   alter table tbl_nast add column contact bigint;
+output:
+ desc tbl_nast;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
+| contact | bigint(20)  | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+
+
+To check list of constraint and their name 
+------------------------------------------
+	select *
+   from information_schema.referential_constraints
+   where constraint_schema = 'dbms';
+
+here,'dbms' is name of database
+
+----------------------------------------
+to drop FK
+-------------------------------
+alter table hostel drop foreign key hostel_ibfk_1; 
+(here,hostel_ibfk_1 is FK constarint name in hostel table in 'dbms' database)

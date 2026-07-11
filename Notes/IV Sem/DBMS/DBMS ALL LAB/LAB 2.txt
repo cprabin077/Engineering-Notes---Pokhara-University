@@ -1,0 +1,29 @@
+Alter statement
+---------------
+1. to add coulmn 
+ syntax:
+ alter table <tbl_name> add <col_name datatype>;
+eg:
+  alter table tbl_student add course varchar2(20);
+
+2. to remove coulmn 
+ syntax:
+ alter table <tbl_name> drop <col_name>;
+eg:
+  alter table tbl_student drop course;
+
+3. to rename column name
+syntax;
+ alter table <tbl_name> change/rename <old_col> to <new_col_name>;
+eg;
+ alter table tbl_student change name to std_name;
+
+4. to delete table
+syntax:
+ drop table table_name;
+eg:
+ drop table tbl_student;
+
+5. to rename table name
+syntax:
+ rename table <old_name> to <new_name>;

@@ -1,0 +1,65 @@
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name   | job_id | Salary |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+|      1 | Ram    | dhn       |   45612 |      12 | BCA         |     13 |   5000 |
+|      2 | Ramesh | dhn       |   45612 |      15 | BE Computer |     13 |  15000 |
+|      4 | Suraj  | Npj       |  455612 |      13 | BCA         |     14 |   2500 |
+|      5 | Suresh | Dhangadhi | 4556712 |      16 | BBA         |     15 |    250 |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+
+select dept_name, sum(salary) from employee group by dept_name;
++-------------+-------------+
+| dept_name   | sum(salary) |
++-------------+-------------+
+| BBA         |         250 |
+| BCA         |        7500 |
+| BE Computer |       15000 |
++-------------+-------------+
+
+ select dept_name,e_address,sum(salary) from employee group by dept_name,e_address;
++-------------+-----------+-------------+
+| dept_name   | e_address | sum(salary) |
++-------------+-----------+-------------+
+| BBA         | Dhangadhi |         250 |
+| BCA         | dhn       |        5000 |
+| BCA         | Npj       |        2500 |
+| BE Computer | dhn       |       15000 |
++-------------+-----------+-------------+
+
+ select dept_name,sum(salary) from employee 
+  group by dept_name 
+ Having sum(salary)>=5000;
++-------------+-------------+
+| dept_name   | sum(salary) |
++-------------+-------------+
+| BCA         |        7500 |
+| BE Computer |       15000 |
++-------------+-------------+
+
+select dept_name,sum(salary) from employee where e_address = 'dhn' group by dept_name having sum(salary)>5000;
++-------------+-------------+
+| dept_name   | sum(salary) |
++-------------+-------------+
+| BCA         |        5000 |
+| BE Computer |       15000 |
++-------------+-------------+
+
+select * from employee order by e_address desc,dept_no;
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name   | job_id | Salary |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+|      4 | Suraj  | Npj       |  455612 |      13 | BCA         |     14 |   2500 |
+|      1 | Ram    | dhn       |   45612 |      12 | BCA         |     13 |   5000 |
+|      2 | Ramesh | dhn       |   45612 |      15 | BE Computer |     13 |  15000 |
+|      5 | Suresh | Dhangadhi | 4556712 |      16 | BBA         |     15 |    250 |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+
+ select * from employee order by e_address desc,dept_no desc;
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name   | job_id | Salary |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+|      4 | Suraj  | Npj       |  455612 |      13 | BCA         |     14 |   2500 |
+|      2 | Ramesh | dhn       |   45612 |      15 | BE Computer |     13 |  15000 |
+|      1 | Ram    | dhn       |   45612 |      12 | BCA         |     13 |   5000 |
+|      5 | Suresh | Dhangadhi | 4556712 |      16 | BBA         |     15 |    250 |
++--------+--------+-----------+---------+---------+-------------+--------+--------+

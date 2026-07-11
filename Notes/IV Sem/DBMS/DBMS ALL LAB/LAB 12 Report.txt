@@ -1,0 +1,76 @@
+ create database nast_db;
+use nast_db;
+
+---------------------------------------------------------------------
+  create table department
+   (
+    dept_no int primary key,
+    dept_name varchar(20),
+    dept_loaction varchar(20)
+   );
+ desc department;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| dept_no       | int(11)     | NO   | PRI | NULL    |       |
+| dept_name     | varchar(20) | YES  |     | NULL    |       |
+| dept_loaction | varchar(20) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+
+-----------------------------------------------------------------------------------
+create table employee
+     (
+    emp_id int primary key,
+    emp_name varchar(20) not null,
+    emp_contact bigint unique,
+    salary float,
+    dept_no int,
+    foreign key(dept_no) references department(dept_no)
+    );
+
+desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int(11)     | NO   | PRI | NULL    |       |
+| emp_name    | varchar(20) | NO   |     | NULL    |       |
+| emp_contact | bigint(20)  | YES  | UNI | NULL    |       |
+| salary      | float       | YES  |     | NULL    |       |
+| dept_no     | int(11)     | YES  | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+--------------------------------------------------------------------------------
+
+insert into department values(1,'BCA','Dhn');
+ insert into department values(2,'BE Computer','ktm');
+insert into department values(3,'BE Civil','ktm');
+ insert into department values(4,'BBA','mnr');
+----------------------------------------------------------------------------
+
+ insert into employee values(1,'Ironman',9814523456,50000,1);
+ insert into employee values(2,'Deadpool',9814524456,55000,2);
+ insert into employee values(3,'Spiderman',9815524446,45000,1);
+ insert into employee values(4,'Groot',9115524446,15000,3);
+
+---------------------------------------------------------------------------------
+
+create user bhaskar identified by 'pass123';
+
+Grant all on employee to bhaskar;
+
+mysql -u bhaskar -p
+Enter password: pass123
+
+
+create user spiderman identified by 'marryjane';
+Grant select on department to spiderman;
+
+
+alter user bhaskar identified by '123pass';
+
+revoke all on employee from bhaskar;
+ 
+
+
+
+

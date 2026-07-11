@@ -1,0 +1,112 @@
+problem 1 :Create a table EMPLOYEE with following schema:
+(Emp_no, E_name, E_address, E_ph_no, Dept_no, Job_id , Salary)
+
+Query :
+	create table Employee
+    (
+    Emp_no int primary key,
+    E_name varchar(20),
+    E_address varchar(20),
+    E_ph_no int,
+    Dept_no int,
+    Job_id int,
+     Salary int
+     );
+
+output:
+desc employee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Emp_no    | int(11)     | NO   | PRI | NULL    |       |
+| E_name    | varchar(20) | YES  |     | NULL    |       |
+| E_address | varchar(20) | YES  |     | NULL    |       |
+| E_ph_no   | int(11)     | YES  |     | NULL    |       |
+| Dept_no   | int(11)     | YES  |     | NULL    |       |
+| Job_id    | int(11)     | YES  |     | NULL    |       |
+| Salary    | int(11)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+problem 2 : Add a new column; HIREDATE to the existing relation.
+
+query :
+ alter table employee add hiredata varchar(20);
+
+output :
+desc employee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Emp_no    | int(11)     | NO   | PRI | NULL    |       |
+| E_name    | varchar(20) | YES  |     | NULL    |       |
+| E_address | varchar(20) | YES  |     | NULL    |       |
+| E_ph_no   | int(11)     | YES  |     | NULL    |       |
+| Dept_no   | int(11)     | YES  |     | NULL    |       |
+| Job_id    | int(11)     | YES  |     | NULL    |       |
+| Salary    | int(11)     | YES  |     | NULL    |       |
+| hiredata  | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+  
+problem 3 : Change the datatype of JOB_ID from char to varchar2.
+
+query :
+    alter table employee modify Job_id varchar(20);
+
+output:
+  +-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Emp_no    | int(11)     | NO   | PRI | NULL    |       |
+| E_name    | varchar(20) | YES  |     | NULL    |       |
+| E_address | varchar(20) | YES  |     | NULL    |       |
+| E_ph_no   | int(11)     | YES  |     | NULL    |       |
+| Dept_no   | int(11)     | YES  |     | NULL    |       |
+| Job_id    | varchar(20) | YES  |     | NULL    |       |
+| Salary    | int(11)     | YES  |     | NULL    |       |
+| hiredata  | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+problem 4 : Change the name of column/field Emp_no to E_no
+
+query :
+     alter table employee change Emp_no E_no int;
+output:
+ +-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| E_no      | int(11)     | NO   | PRI | NULL    |       |
+| E_name    | varchar(20) | YES  |     | NULL    |       |
+| E_address | varchar(20) | YES  |     | NULL    |       |
+| E_ph_no   | int(11)     | YES  |     | NULL    |       |
+| Dept_no   | int(11)     | YES  |     | NULL    |       |
+| Job_id    | varchar(20) | YES  |     | NULL    |       |
+| Salary    | int(11)     | YES  |     | NULL    |       |
+| hiredata  | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+problem 5 :Modify the column width of the job field of emp table
+
+query :
+   alter table employee modify job_id varchar(10);
+output:
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| E_no      | int(11)     | NO   | PRI | NULL    |       |
+| E_name    | varchar(20) | YES  |     | NULL    |       |
+| E_address | varchar(20) | YES  |     | NULL    |       |
+| E_ph_no   | int(11)     | YES  |     | NULL    |       |
+| Dept_no   | int(11)     | YES  |     | NULL    |       |
+| job_id    | varchar(10) | YES  |     | NULL    |       |
+| Salary    | int(11)     | YES  |     | NULL    |       |
+| hiredata  | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+problem 6 :Delete all the data from table permanently.
+
+query :
+truncate table employee;
+
+output:
+ empty set
+   

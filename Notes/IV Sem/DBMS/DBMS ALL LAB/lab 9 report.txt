@@ -1,0 +1,173 @@
+    create table employee
+    (
+    eno int primary key,
+    ename varchar(20),
+    eaddress varchar(20),
+    ephno bigint,
+    dept_no int,
+    job_id int,
+    salary float,
+    dept_name varchar(20)
+    );
+
+  desc employee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| eno       | int(11)     | NO   | PRI | NULL    |       |
+| ename     | varchar(20) | YES  |     | NULL    |       |
+| eaddress  | varchar(20) | YES  |     | NULL    |       |
+| ephno     | bigint(20)  | YES  |     | NULL    |       |
+| dept_no   | int(11)     | YES  |     | NULL    |       |
+| job_id    | int(11)     | YES  |     | NULL    |       |
+| salary    | float       | YES  |     | NULL    |       |
+| dept_name | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+	select * from employee;
++-----+--------+----------+------------+---------+--------+--------+-------------+
+| eno | ename  | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+--------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram    | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju   | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari   | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj  | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal  | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek  | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek  | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam  | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten  | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
++-----+--------+----------+------------+---------+--------+--------+-------------+
+===================================================================================
+show tables;
++----------------+
+| Tables_in_dbms |
++----------------+
+| boats          |
+| course         |
+| department     |
+| dept           |
+| emp            |
+| employee       |
+| faculty        |
+| hostel         |
+| register       |
+| reserves       |
+| sailors        |
+| student        |
+| tbl_nast       |
+| tbl_std        |
+| teaching       |
+| vw_dept_loc    |
+| vw_emp         |
+| vw_emp_dhn     |
++----------------+
+
+===================================================================================
+1. Create a view emp from employee such that it contains only emp_no and emp_name and department.
+
+Query : create view vw_emp as
+     select  eno,ename,dept_name from employee;
+
+desc vw_emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| eno       | int(11)     | NO   |     | NULL    |       |
+| ename     | varchar(20) | YES  |     | NULL    |       |
+| dept_name | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+output :  select * from vw_emp;
++-----+--------+-------------+
+| eno | ename  | dept_name   |
++-----+--------+-------------+
+|   1 | Ram    | BCA         |
+|   2 | Raju   | BE Computer |
+|   3 | Hari   | BE Civil    |
+|   4 | Himesh | BBA         |
+|   5 | Suresh | BCA         |
+|   6 | Suraj  | BE Computer |
+|   7 | Ramesh | BE Computer |
+|   8 | Ujwal  | BE Civil    |
+|   9 | vivek  | BBA         |
+|  10 | vivek  | BBA         |
+|  11 | Shyam  | NULL        |
+|  12 | Arten  | NULL        |
++-----+--------+-------------+
+
+2.  Create a view dept from employee with only dept_no and location.
+
+query :  create view vw_dept_loc as
+    select dept_no,eaddress from employee;
+
+Output:
+ desc vw_dept_loc;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| dept_no  | int(11)     | YES  |     | NULL    |       |
+| eaddress | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+
+ select * from vw_dept_loc;
++---------+----------+
+| dept_no | eaddress |
++---------+----------+
+|       1 | dhn      |
+|       2 | dhn      |
+|       3 | ktm      |
+|       4 | ktm      |
+|       1 | npj      |
+|       2 | npj      |
+|       2 | mnr      |
+|       3 | mnr      |
+|       4 | pkr      |
+|       4 | bkt      |
+|    NULL | bkt      |
+|    NULL | tkp      |
++---------+----------+
+
+3. Create a view that contains the details of employees who lives in Dhangadhi.
+
+query: 
+  create view vw_emp_dhn as
+     select * from employee where eaddress = 'dhn';
+
+Output : desc vw_emp_dhn;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| eno       | int(11)     | NO   |     | NULL    |       |
+| ename     | varchar(20) | YES  |     | NULL    |       |
+| eaddress  | varchar(20) | YES  |     | NULL    |       |
+| ephno     | bigint(20)  | YES  |     | NULL    |       |
+| dept_no   | int(11)     | YES  |     | NULL    |       |
+| job_id    | int(11)     | YES  |     | NULL    |       |
+| salary    | float       | YES  |     | NULL    |       |
+| dept_name | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+select * from vw_emp_dhn;
++-----+-------+----------+------------+---------+--------+--------+-------------+
+| eno | ename | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+-------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram   | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju  | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
++-----+-------+----------+------------+---------+--------+--------+-------------+
+
+4. Drop the views.
+
+query : 
+	drop view vw_emp;
+
+output: desc vw_emp; 
+ERROR 1146 (42S02): Table 'dbms.vw_emp' doesn't exist
+
+	OR
+select * from vw_emp_contact;
+ERROR 1146 (42S02): Table 'dbms.vw_emp' doesn't exist
+

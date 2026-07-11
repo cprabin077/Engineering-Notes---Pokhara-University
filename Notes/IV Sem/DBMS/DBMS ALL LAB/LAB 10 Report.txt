@@ -1,0 +1,110 @@
+1. Create an index on employee table, Emp_no.
+Query:
+ create index idx_empno on employee(eno);
+output:
+	show indexes from employee;
++----------+------------+-----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name  | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+-----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| employee |          0 | PRIMARY   |            1 | eno         | A         |          14 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          1 | idx_empno |            1 | eno         | A         |          14 |     NULL | NULL   |      | BTREE      |         |               |
++----------+------------+-----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+The SHOW INDEXES returns the following information:
+
+table
+The name of the table
+
+non_unique
+1 if the index can contain duplicates, 0 if it cannot.
+
+key_name
+The name of the index. The primary key index always has the name of PRIMARY.
+
+seq_in_index
+The column sequence number in the index. The first column sequence number starts from 1.
+
+column_name
+The column name
+
+collation
+Collation represents how the column is sorted in the index. A means ascending, B means descending, or NULL means not sorted.
+
+cardinality
+The cardinality returns an estimated number of unique values in the index.
+
+Note that the higher the cardinality, the greater the chance that the query optimizer uses the index for lookups.
+
+sub_part
+The index prefix. It is null if the entire column is indexed. Otherwise, it shows the number of indexed characters in case the column is partially indexed.
+
+packed
+indicates how the key is packed; NUL if it is not.
+
+null
+YES if the column may contain NULL values and blank if it does not.
+
+index_type
+represents the index method used such as BTREE, HASH, RTREE, or FULLTEXT.
+
+comment
+The information about the index not described in its own column.
+
+index_comment
+shows the comment for the index specified when you create the index with the COMMENT attribute.
+
+visible
+Whether the index is visible or invisible to the query optimizer or not; YES if it is, NO if not.
+
+2. Create an index on employee table, Emp_no,Dept_no
+Query:
+ create index idx_deptno on employee(eno,dept_no);
+output:
+	show indexes from employee;
+show indexes from employee;
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name   | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| employee |          0 | PRIMARY    |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          1 | idx_empno  |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          1 | idx_deptno |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          1 | idx_deptno |            2 | dept_no     | A         |          15 |     NULL | NULL   | YES  | BTREE      |         |               |
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+
+3. Create a unique index on employee table, Emp_no.
+
+Query:
+ create unique index idx_empno_uni on employee(eno);
+
+output:
+ show indexes from employee;
++----------+------------+---------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name      | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+---------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| employee |          0 | PRIMARY       |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          0 | idx_empno_uni |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          1 | idx_empno     |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          1 | idx_deptno    |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          1 | idx_deptno    |            2 | dept_no     | A         |          15 |     NULL | NULL   | YES  | BTREE      |         |               |
++----------+------------+---------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+4. Drop the index.
+
+Query: 
+  alter table employee drop index idx_empno;
+output:
+
+show indexes from employee;
++----------+------------+---------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name      | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+---------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| employee |          0 | PRIMARY       |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          0 | idx_empno_uni |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          1 | idx_deptno    |            1 | eno         | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| employee |          1 | idx_deptno    |            2 | dept_no     | A         |          15 |     NULL | NULL   | YES  | BTREE      |         |               |
++----------+------------+---------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+
+
+

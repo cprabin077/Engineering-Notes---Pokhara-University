@@ -1,0 +1,123 @@
+1. Create a table called EMP with the following structure.
+
+Name             Type
+---------- 	----------------------
+EMPNO 		int
+ENAME 		VARCHAR (20)
+JOB 		VARCHAR (20)
+DEPTNO 		int
+SAL 		float
+Allow NULL for all columns except ename and job.
+
+
+Query :
+   create table emp
+   (
+     Empno int ,
+     Ename varchar(20) not null,
+     Job varchar(20) not null,
+     deptno int,
+     sal float
+   );
+
+Output:
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Empno  | int(11)     | YES  |     | NULL    |       |
+| Ename  | varchar(20) | NO   |     | NULL    |       |
+| Job    | varchar(20) | NO   |     | NULL    |       |
+| deptno | int(11)     | YES  |     | NULL    |       |
+| sal    | float       | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+2. Add constraints to check, while entering the empno value (i.e) empno > 100.
+
+ Query :
+   alter table emp add constraint chk_empno check (empno > 100);
+
+output:
+ insert into emp(empno,ename,job) values (102,'Hari','xyz');
+  inserted
+insert into emp(empno,ename,job) values (12,'Raju','abc');
+not inserted
+ERROR 4025 (23000): CONSTRAINT `chk_empno` failed for `dbms_lab`.`emp`
+
+
+3. Define the field DEPTNO as unique.
+
+query:
+	alter table emp add unique(deptno);
+ 		
+		OR
+
+	alter table emp add constraint const_uniq unique(deptno);
+
+		or
+       alter table emp modify deptno int unique;
+
+output;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Empno  | int(11)     | YES  |     | NULL    |       |
+| Ename  | varchar(20) | NO   |     | NULL    |       |
+| Job    | varchar(20) | NO   |     | NULL    |       |
+| deptno | int(11)     | YES  | UNI | NULL    |       |
+| sal    | float       | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+4. Create a primary key constraint for the table(EMPNO).
+
+query:
+  alter table emp add Primary key(Empno);
+ 		
+		OR
+	alter table emp add constraint const_pk Primary key(Empno);
+
+ output:
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Empno  | int(11)     | NO   | PRI | NULL    |       |
+| Ename  | varchar(20) | NO   |     | NULL    |       |
+| Job    | varchar(20) | NO   |     | NULL    |       |
+| deptno | int(11)     | YES  | UNI | NULL    |       |
+| sal    | float       | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+
+
+5. Write queries to implement and practice constraints
+
+ query:
+ -->  alter table emp add constraint chk_sal check(sal > 13000);
+
+ --> alter table emp modify job varchar(20) default 'nast';
+
+output:
+ +--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Empno  | int(11)     | NO   | PRI | NULL    |       |
+| Ename  | varchar(20) | NO   |     | NULL    |       |
+| job    | varchar(20) | YES  |     | nast    |       |
+| deptno | int(11)     | YES  | UNI | NULL    |       |
+| sal    | float       | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+NOTE:
+ 1. to delete primary key:
+  -->  alter table emp drop Primary key;
+
+2. to add not null
+---> Alter table emp modify job varchar(20) not null;
+
+3. to delete constraint
+--> alter table emp drop constraint const_uniq;
+ 
+To view constraints:
+==========================================
+SELECT TABLE_NAME, CONSTRAINT_TYPE, CONSTRAINT_NAME
+FROM information_schema.table_constraints
+WHERE table_name='emp';

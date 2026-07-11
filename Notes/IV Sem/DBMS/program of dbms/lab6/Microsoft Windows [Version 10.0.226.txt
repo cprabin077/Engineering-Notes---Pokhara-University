@@ -1,0 +1,136 @@
+Microsoft Windows [Version 10.0.22621.1702]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Dell>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql.exe -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create table dept(
+    -> dept_no int primary key,
+    -> dept_name varchar(50)
+    -> );
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use db_prajwal
+Database changed
+MariaDB [db_prajwal]> create table dept(
+    -> dept_no int primary key,
+    -> dept_name varchar(50)
+    -> );
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [db_prajwal]> insert into dept values (1,'BCA');
+Query OK, 1 row affected (0.041 sec)
+
+MariaDB [db_prajwal]> insert into dept values (2,'BE Computer');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into dept values (3,'BE Civil');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into dept values (4,'BBA');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> select * from dept;
++---------+-------------+
+| dept_no | dept_name   |
++---------+-------------+
+|       1 | BCA         |
+|       2 | BE Computer |
+|       3 | BE Civil    |
+|       4 | BBA         |
++---------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_prajwal]> select * from employee2;
++--------+--------+---------------+---------+-------------+--------+---------+
+| emp_no | e_name | e_address     | e_ph_no | dept_name   | job_id | salary  |
++--------+--------+---------------+---------+-------------+--------+---------+
+|      1 | Ram    | Dhangadhi     |  904904 | BCA         |      4 | 50000.5 |
+|      2 | Shyam  | Mahendranagar |  523762 | BE Computer |      3 | 15000.5 |
+|      3 | Hari   | tkp           | 5267762 | BE civil    |      4 |   16000 |
+|      4 | mamit  | lamki         |  526745 | math        |      4 |   26000 |
+|      5 | parbin | muda          |  526747 | BCA         |      5 |   26000 |
+|      6 | sagar  | muda          | 1526747 | BCA         |      2 |   36000 |
++--------+--------+---------------+---------+-------------+--------+---------+
+6 rows in set (0.011 sec)
+
+MariaDB [db_prajwal]> alter table add dept_no;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'add dept_no' at line 1
+MariaDB [db_prajwal]> alter table add dept_no in employee2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'add dept_no in employee2' at line 1
+MariaDB [db_prajwal]> INSERT INTO departments (dept_no) VALUES ('YOUR_DEPT_NO');
+ERROR 1146 (42S02): Table 'db_prajwal.departments' doesn't exist
+MariaDB [db_prajwal]> select * from employee;
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+| e_no | e_name | e_address | e_ph_no    | e_dept_no | e_dept_name | job_id | salary   |
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+|    3 | Rohit  | india     | 8888888888 |        45 | BCCI        |     19 | 70000000 |
+|   14 | kiran  | Giant     | 7777777777 |         9 | nast        |     25 |    17000 |
+|   17 | jaddu  | india     | 9999999999 |        28 | BCCI        |     20 | 70000000 |
+|   18 | kholi  | india     | 7777777777 |        18 | BCCI        |     15 | 70000000 |
++------+--------+-----------+------------+-----------+-------------+--------+----------+
+4 rows in set (0.015 sec)
+
+MariaDB [db_prajwal]> select dept_no from union select dept_no from employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'union select dept_no from employee' at line 1
+MariaDB [db_prajwal]> create table emp6;
+ERROR 1113 (42000): A table must have at least 1 column
+MariaDB [db_prajwal]> create table employee6
+    -> (
+    -> emp_no int,
+    -> e_name varchar(50),
+    -> e_address varchar(50),
+    -> e_ph_no bigint,
+    -> dept_no int,
+    -> job_id int,
+    -> salary float
+    -> );
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [db_prajwal]> desc employee6;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| emp_no    | int(11)     | YES  |     | NULL    |       |
+| e_name    | varchar(50) | YES  |     | NULL    |       |
+| e_address | varchar(50) | YES  |     | NULL    |       |
+| e_ph_no   | bigint(20)  | YES  |     | NULL    |       |
+| dept_no   | int(11)     | YES  |     | NULL    |       |
+| job_id    | int(11)     | YES  |     | NULL    |       |
+| salary    | float       | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+7 rows in set (0.012 sec)
+
+MariaDB [db_prajwal]> insert into employee6 values(1,'parbin','dhn',53843089,2,3,300000);
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [db_prajwal]> insert into employee6 values(1,'sagar','lamki',53843089,1,5,10000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee6 values(3,'suraj','baliya',538430439,4,2,30000);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee6 values(2,'manoj','tkp',6430439,6,7,35600);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee6 values(4,'ram','sukhard',64365487,7,8,4850630);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> insert into employee6 values(6,'sandesh','muda',643655,5,9,546741);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [db_prajwal]> select * from employee6;
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+ERROR 2002 (HY000): Can't connect to MySQL server on 'localhost' (10061)
+ERROR: Can't connect to the server
+
+unknown [db_prajwal]>

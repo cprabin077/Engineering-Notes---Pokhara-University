@@ -1,0 +1,285 @@
+select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+insert into employee(eno,ename,eaddress) values (14,'Harish','ktm');
+
+
+ select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+ insert into employee(eno,ename,eaddress) values (15,'Aman','dhn');
+
+ select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  15 | Aman    | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+
+rollback;
+
+
+ select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  15 | Aman    | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            1 |
++--------------+
+
+
+ set autocommit = 0;
+
+
+ select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            0 |
++--------------+
+
+
+insert into employee(eno,ename,eaddress) values (16,'Amish','dhn');
+
+ select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  15 | Aman    | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  16 | Amish   | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+
+ rollback;
+
+select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  15 | Aman    | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+ insert into employee(eno,ename,eaddress) values (16,'Amish','dhn');'
+
+
+ insert into employee(eno,ename,eaddress) values (16,'Amish','dhn');
+
+ select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  15 | Aman    | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  16 | Amish   | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+commit;
+
+ rollback;
+
+ select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  15 | Aman    | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  16 | Amish   | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+savepoint s1;
+
+
+ delete from employee where eno = 16;
+
+
+ delete from employee where eno = 15;
+
+
+ savepoint s2;
+
+insert into employee(eno,ename,eaddress) values (15,'Amish','dhn');
+
+
+ insert into employee(eno,ename,eaddress) values (16,'Rohit','dhn');
+
+select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  15 | Amish   | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  16 | Rohit   | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+rollback to s2;
+
+ select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+ rollback to s1;
+
+
+select * from employee;
++-----+---------+----------+------------+---------+--------+--------+-------------+
+| eno | ename   | eaddress | ephno      | dept_no | job_id | salary | dept_name   |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+|   1 | Ram     | dhn      | 9814614236 |       1 |     10 |  10000 | BCA         |
+|   2 | Raju    | dhn      | 9815614236 |       2 |     11 |  15000 | BE Computer |
+|   3 | Hari    | ktm      | 9815615236 |       3 |     12 |   1500 | BE Civil    |
+|   4 | Himesh  | ktm      | 9565615236 |       4 |     13 |  12000 | BBA         |
+|   5 | Suresh  | npj      | 9565614436 |       1 |     12 |  15500 | BCA         |
+|   6 | Suraj   | npj      | 9565614437 |       2 |     11 |   2500 | BE Computer |
+|   7 | Ramesh  | mnr      | 9565614447 |       2 |     10 |  25000 | BE Computer |
+|   8 | Ujwal   | mnr      | 9565714447 |       3 |     14 |   2500 | BE Civil    |
+|   9 | vivek   | pkr      | 9465714447 |       4 |     10 |   5000 | BBA         |
+|  10 | vivek   | bkt      | 9465814447 |       4 |     11 |   5500 | BBA         |
+|  11 | Shyam   | bkt      | 9465814444 |    NULL |     11 |   5500 | NULL        |
+|  12 | Arten   | tkp      | 9455814444 |    NULL |     12 |    500 | NULL        |
+|  13 | Anajali | dhn      | 9841563213 |       4 |     12 |   5000 | BCA         |
+|  14 | Harish  | ktm      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  15 | Aman    | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
+|  16 | Amish   | dhn      |       NULL |    NULL |   NULL |   NULL | NULL        |
++-----+---------+----------+------------+---------+--------+--------+-------------+
+

@@ -1,0 +1,75 @@
+ select * from employee;
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name   | job_id | Salary |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+|      1 | Ram    | dhn       |   45612 |      12 | BCA         |     13 |   5000 |
+|      2 | Ramesh | dhn       |   45612 |      15 | BE Computer |     13 |  15000 |
+|      4 | Suraj  | Npj       |  455612 |      13 | BCA         |     14 |   2500 |
+|      5 | Suresh | Dhangadhi | 4556712 |      16 | BBA         |     15 |    250 |
++--------+--------+-----------+---------+---------+-------------+--------+--------+
+
+1. Find the maximum salary of employee.
+
+query :
+    select max(salary) from employee;
+
+
+1. Select employee name, deptno whose salary is maximum.
+
+query :
+    select E_name, Dept_no, max(salary) from employee where salary = (select max(salary) from employee);
+
+output:
++--------+---------+-------------+
+| E_name | dept_no | max(salary) |
++--------+---------+-------------+
+| Ramesh |      15 |       15000 |
++--------+---------+-------------+
+
+2.Display all the information whose salary is minimum.
+
+Query:
+ select * from employee where salary = (select min(salary) from employee);
+
+Output:
++--------+--------+-----------+---------+---------+-----------+--------+--------+
+| Emp_no | E_name | E_address | E_ph_no | Dept_no | Dept_name | job_id | Salary |
++--------+--------+-----------+---------+---------+-----------+--------+--------+
+|      5 | Suresh | Dhangadhi | 4556712 |      16 | BBA       |     15 |    250 |
++--------+--------+-----------+---------+---------+-----------+--------+--------+
+
+3.Count number of employee whose department is BCA.
+
+Query:
+select count(Emp_no) as no_of_employee from employee where Dept_name = 'BCA';
+
+Output:
++----------------+
+| no_of_employee |
++----------------+
+|              2 |
++----------------+
+
+4. Count total number of records of employee table.
+
+Query:
+  select count(Emp_no) as total_record from employee;
+
+Output:
++--------------+
+| total_record |
++--------------+
+|            4 |
++--------------+
+
+5. Find average of given numbers: 10,20, 30
+
+Query:
+select ((10+20+30)/3) as average;
++----------+
+| avegage  |
++----------+
+|  20.0000 |
++----------+
+  
+  
