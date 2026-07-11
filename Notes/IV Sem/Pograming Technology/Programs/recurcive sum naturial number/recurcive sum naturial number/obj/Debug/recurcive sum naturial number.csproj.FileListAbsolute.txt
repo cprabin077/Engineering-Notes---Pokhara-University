@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\recurcive sum naturial number\recurcive sum naturial number\bin\Debug\recurcive sum naturial number.exe.config
+D:\4th sem\MK programing technology\program\recurcive sum naturial number\recurcive sum naturial number\bin\Debug\recurcive sum naturial number.exe
+D:\4th sem\MK programing technology\program\recurcive sum naturial number\recurcive sum naturial number\bin\Debug\recurcive sum naturial number.pdb
+D:\4th sem\MK programing technology\program\recurcive sum naturial number\recurcive sum naturial number\obj\Debug\recurcive sum naturial number.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\recurcive sum naturial number\recurcive sum naturial number\obj\Debug\recurcive sum naturial number.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\recurcive sum naturial number\recurcive sum naturial number\obj\Debug\recurcive sum naturial number.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\recurcive sum naturial number\recurcive sum naturial number\obj\Debug\recurcive sum naturial number.exe
+D:\4th sem\MK programing technology\program\recurcive sum naturial number\recurcive sum naturial number\obj\Debug\recurcive sum naturial number.pdb

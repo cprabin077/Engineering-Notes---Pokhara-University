@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\odd mumber\odd mumber\obj\Debug\odd mumber.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\odd mumber\odd mumber\obj\Debug\odd mumber.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\odd mumber\odd mumber\obj\Debug\odd mumber.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\odd mumber\odd mumber\bin\Debug\odd mumber.exe.config
+D:\4th sem\MK programing technology\program\odd mumber\odd mumber\bin\Debug\odd mumber.exe
+D:\4th sem\MK programing technology\program\odd mumber\odd mumber\bin\Debug\odd mumber.pdb
+D:\4th sem\MK programing technology\program\odd mumber\odd mumber\obj\Debug\odd mumber.exe
+D:\4th sem\MK programing technology\program\odd mumber\odd mumber\obj\Debug\odd mumber.pdb

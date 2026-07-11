@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\factorial recursive function\factorial recursive function\bin\Debug\factorial recursive function.exe.config
+D:\4th sem\MK programing technology\program\factorial recursive function\factorial recursive function\bin\Debug\factorial recursive function.exe
+D:\4th sem\MK programing technology\program\factorial recursive function\factorial recursive function\bin\Debug\factorial recursive function.pdb
+D:\4th sem\MK programing technology\program\factorial recursive function\factorial recursive function\obj\Debug\factorial recursive function.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\factorial recursive function\factorial recursive function\obj\Debug\factorial recursive function.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\factorial recursive function\factorial recursive function\obj\Debug\factorial recursive function.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\factorial recursive function\factorial recursive function\obj\Debug\factorial recursive function.exe
+D:\4th sem\MK programing technology\program\factorial recursive function\factorial recursive function\obj\Debug\factorial recursive function.pdb

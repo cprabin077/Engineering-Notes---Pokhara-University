@@ -1,0 +1,3 @@
+D:\4th sem\MK programing technology\program\odd or even using function\odd or even using function\obj\Debug\odd or even using function.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\odd or even using function\odd or even using function\obj\Debug\odd or even using function.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\odd or even using function\odd or even using function\obj\Debug\odd or even using function.csproj.CoreCompileInputs.cache

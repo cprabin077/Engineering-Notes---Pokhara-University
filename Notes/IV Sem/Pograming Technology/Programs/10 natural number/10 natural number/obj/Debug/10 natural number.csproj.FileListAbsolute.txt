@@ -1,0 +1,3 @@
+D:\4th sem\MK programing technology\program\10 natural number\10 natural number\obj\Debug\10 natural number.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\10 natural number\10 natural number\obj\Debug\10 natural number.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\10 natural number\10 natural number\obj\Debug\10 natural number.csproj.CoreCompileInputs.cache

@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\palindrom or not\palindrom or not\obj\Debug\palindrom or not.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\palindrom or not\palindrom or not\obj\Debug\palindrom or not.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\palindrom or not\palindrom or not\obj\Debug\palindrom or not.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\palindrom or not\palindrom or not\bin\Debug\palindrom or not.exe.config
+D:\4th sem\MK programing technology\program\palindrom or not\palindrom or not\bin\Debug\palindrom or not.exe
+D:\4th sem\MK programing technology\program\palindrom or not\palindrom or not\bin\Debug\palindrom or not.pdb
+D:\4th sem\MK programing technology\program\palindrom or not\palindrom or not\obj\Debug\palindrom or not.exe
+D:\4th sem\MK programing technology\program\palindrom or not\palindrom or not\obj\Debug\palindrom or not.pdb

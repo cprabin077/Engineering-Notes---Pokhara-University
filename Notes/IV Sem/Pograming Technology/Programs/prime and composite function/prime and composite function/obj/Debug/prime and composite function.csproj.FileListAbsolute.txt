@@ -1,0 +1,3 @@
+D:\4th sem\MK programing technology\program\prime and composite function\prime and composite function\obj\Debug\prime and composite function.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\prime and composite function\prime and composite function\obj\Debug\prime and composite function.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\prime and composite function\prime and composite function\obj\Debug\prime and composite function.csproj.CoreCompileInputs.cache

@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\even number\even number\bin\Debug\even number.exe.config
+D:\4th sem\MK programing technology\program\even number\even number\bin\Debug\even number.exe
+D:\4th sem\MK programing technology\program\even number\even number\bin\Debug\even number.pdb
+D:\4th sem\MK programing technology\program\even number\even number\obj\Debug\even number.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\even number\even number\obj\Debug\even number.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\even number\even number\obj\Debug\even number.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\even number\even number\obj\Debug\even number.exe
+D:\4th sem\MK programing technology\program\even number\even number\obj\Debug\even number.pdb

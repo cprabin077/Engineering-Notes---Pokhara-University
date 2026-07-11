@@ -1,0 +1,11 @@
+D:\4th sem\MK programing technology\program\book shop management\book shop management\bin\Debug\book shop management.exe.config
+D:\4th sem\MK programing technology\program\book shop management\book shop management\bin\Debug\book shop management.exe
+D:\4th sem\MK programing technology\program\book shop management\book shop management\bin\Debug\book shop management.pdb
+D:\4th sem\MK programing technology\program\book shop management\book shop management\obj\Debug\book shop management.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\book shop management\book shop management\obj\Debug\book shop management.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\book shop management\book shop management\obj\Debug\book_shop_management.Form1.resources
+D:\4th sem\MK programing technology\program\book shop management\book shop management\obj\Debug\book_shop_management.Properties.Resources.resources
+D:\4th sem\MK programing technology\program\book shop management\book shop management\obj\Debug\book shop management.csproj.GenerateResource.cache
+D:\4th sem\MK programing technology\program\book shop management\book shop management\obj\Debug\book shop management.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\book shop management\book shop management\obj\Debug\book shop management.exe
+D:\4th sem\MK programing technology\program\book shop management\book shop management\obj\Debug\book shop management.pdb

@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\series 1\series 1\bin\Debug\series 1.exe.config
+D:\4th sem\MK programing technology\program\series 1\series 1\bin\Debug\series 1.exe
+D:\4th sem\MK programing technology\program\series 1\series 1\bin\Debug\series 1.pdb
+D:\4th sem\MK programing technology\program\series 1\series 1\obj\Debug\series 1.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\series 1\series 1\obj\Debug\series 1.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\series 1\series 1\obj\Debug\series 1.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\series 1\series 1\obj\Debug\series 1.exe
+D:\4th sem\MK programing technology\program\series 1\series 1\obj\Debug\series 1.pdb

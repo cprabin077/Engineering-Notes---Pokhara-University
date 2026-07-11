@@ -1,0 +1,8 @@
+D:\4th sem\MK programing technology\program\factroial of even\factroial of even\obj\Debug\factroial of even.csproj.AssemblyReference.cache
+D:\4th sem\MK programing technology\program\factroial of even\factroial of even\obj\Debug\factroial of even.csproj.SuggestedBindingRedirects.cache
+D:\4th sem\MK programing technology\program\factroial of even\factroial of even\obj\Debug\factroial of even.csproj.CoreCompileInputs.cache
+D:\4th sem\MK programing technology\program\factroial of even\factroial of even\bin\Debug\factroial of even.exe.config
+D:\4th sem\MK programing technology\program\factroial of even\factroial of even\bin\Debug\factroial of even.exe
+D:\4th sem\MK programing technology\program\factroial of even\factroial of even\bin\Debug\factroial of even.pdb
+D:\4th sem\MK programing technology\program\factroial of even\factroial of even\obj\Debug\factroial of even.exe
+D:\4th sem\MK programing technology\program\factroial of even\factroial of even\obj\Debug\factroial of even.pdb
